@@ -1,0 +1,33 @@
+all processes keep time on their own
+the synchronization makes sure they take their timesteps forward together
+
+processes
+	process for each runway
+		wait for signal
+		if_idle:
+			check for plane in
+				accept plane
+				goto when_done
+			check for plane out
+				accept plane
+				goto when_done
+		if_plane:
+			advance time counter
+			goto when_done
+		when_done:
+			send message through done signal pipe
+	process for queue handling
+		check for plane incoming
+		if_plane:
+			push plane to plane queueing pipe
+		when_done:
+			send continue signal to children
+			for child in runway_children:
+				check for done signal
+
+pipes
+	done signal (runways to queuer)
+		blocking
+	plane queueing (queuer to runways)
+		non-blocking
+		http://stackoverflow.com/questions/5616092/non-blocking-call-for-reading-descriptor
