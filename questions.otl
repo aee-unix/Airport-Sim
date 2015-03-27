@@ -1,6 +1,5 @@
-Are we allowed to use the STL queue class?
-When will we receive the BoolSource class from you?
-What are appropriate simulations?
+Are we allowed to use the STL queue class? No. Also, don't use the pipe implementation.
+When will we receive the BoolSource class from you? You are making your own.
+What are appropriate simulations? Make up your own.
 	How long it takes to take off and land will affect whether or not we need a new runway, and that varies with each run.
-Can a properly-maintained git repository replace the programming log?
-If we are to implement the extra credit features, we will need to change the number of arguments. How will we let you know this?
+If we are to implement the extra credit features, we will need to change the number of arguments. How will we let you know this? README
