@@ -6,7 +6,7 @@
 // 
 //        Version:  1.0
 //        Created:  03/24/2015 08:23:26 PM
-//       Revision:  none
+//       Revision:  None
 //       Compiler:  g++
 // 
 //         Author:  Eric Dilmore (), ericdilmore@gmail.com
@@ -19,10 +19,15 @@
 
 class Airplane
 {
-    public:
+    private:
         int fuel;
         int timeIn;
-        Airplane ( int fuel, int timeIn );
+	bool crashed;
+        Airplane (int fuel, int timeIn);
+    public:
+    	int getFuel();
+	int getTimeIn();
+	bool isCrashed();
 }
 
 #endif
