@@ -20,15 +20,15 @@
 class Runway
 {
     private:
-	Queue takeoffQueue;
-	Airplane* currentPlane;
-	int timeRemaining;
-	Runway(Airplane* plane, int time);
+    Queue takeoffQueue;
+    Airplane* currentPlane;
+    int timeRemaining;
+    Runway(Airplane* plane, int time);
     public:
-    	Airplane* getCurrentPlane();
-	Queue* getTakeoffQueue();
-	int getTime();
-    	void timestep();
+    Airplane* getCurrentPlane();
+    Queue* getTakeoffQueue();
+    int getTime();
+    void timestep();
 }
 
 #endif

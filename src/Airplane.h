@@ -20,14 +20,14 @@
 class Airplane
 {
     private:
-        int fuel;
-        int timeIn;
-	bool crashed;
-        Airplane (int fuel, int timeIn);
+    int fuel;
+    int timeIn;
+    bool crashed;
+    Airplane (int fuel, int timeIn);
     public:
-    	int getFuel();
-	int getTimeIn();
-	bool isCrashed();
+    int getFuel();
+    int getTimeIn();
+    bool isCrashed();
 }
 
 #endif

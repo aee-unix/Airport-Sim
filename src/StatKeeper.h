@@ -20,26 +20,26 @@
 class StatKeeper
 {
     private:
-	int totalTakeoffTime;
-	int totalLandingTime;
-	int takeoffs;
-	int landings;
-	int crashes;
-    	StatKeeper();
+    int totalTakeoffTime;
+    int totalLandingTime;
+    int takeoffs;
+    int landings;
+    int crashes;
+    StatKeeper();
     public:
-    	int getTotalTakeoffTime();
-	int getTotalLandingTime();
-	int getTakeoffs();
-	int getLandings();
-	int getCrashes();
-	void incrementTakeoffTime(int time);
-	void incrementLandingTime(int time);
-	void setTakeoffs();
-	void setLandings();
-	void setCrashes();
-    	void incrementTime();
-	void printStats();
-	int getAverageTime();
+    int getTotalTakeoffTime();
+    int getTotalLandingTime();
+    int getTakeoffs();
+    int getLandings();
+    int getCrashes();
+    void incrementTakeoffTime(int time);
+    void incrementLandingTime(int time);
+    void setTakeoffs();
+    void setLandings();
+    void setCrashes();
+    void incrementTime();
+    void printStats();
+    int getAverageTime();
 }
 
 #endif
