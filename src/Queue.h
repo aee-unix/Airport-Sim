@@ -17,6 +17,8 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
+#include "AirNode.h"
+
 class Queue
 {
     private:
