@@ -23,8 +23,8 @@ class Runway
 	Queue takeoffQueue;
 	Airplane* currentPlane;
 	int timeRemaining;
-	Runway(Airplane* plane, int time);
     public:
+	Runway(Airplane* plane, int time);
     	Airplane* getCurrentPlane();
 	Queue* getTakeoffQueue();
 	int getTime();
