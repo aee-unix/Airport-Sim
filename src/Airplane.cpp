@@ -16,20 +16,24 @@
 
 #include "Airplane.h"
 
-Airplane::Airplane(int fuel, int timeIn)
+Airplane::Airplane(int f, int t)
 {
-    // Empty body
+    fuel = f;
+    timeIn = t;
 }
 
 Airplane::getFuel()
 {
-    // Empty body
+    return fuel;
 }
 Airplane::getTimeIn()
 {
-    // Empty body
+    return timeIn;
 }
-Airplane::isCrashed()
+Airplane::isCrashed(int curTime)
 {
-    // Empty body
+    if((curTime - timeIn) >= fuel)
+    	return true;
+    else
+        return false;
 }
