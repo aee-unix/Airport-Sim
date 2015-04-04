@@ -23,7 +23,7 @@ class Airplane
         int fuel;
         int timeIn;
 	bool crashed;
-        Airplane (int fuel, int timeIn);
+        Airplane(int fuel, int timeIn);
     public:
     	int getFuel();
 	int getTimeIn();
