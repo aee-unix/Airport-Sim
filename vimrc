@@ -9,3 +9,6 @@ filetype on
 filetype indent on
 filetype plugin on
 syntax on
+
+set nocompatible
+set mouse=a
