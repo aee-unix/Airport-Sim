@@ -1,8 +1,0 @@
-CC=gcc
-CFLAGS=
-LIBS=
-OBJECTS=
-EXECUTABLE=airsim
-
-clean:
-	rm -rf $(OBJECTS) $(EXECUTABLE)
