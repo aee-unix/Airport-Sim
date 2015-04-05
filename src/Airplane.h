@@ -22,11 +22,11 @@ class Airplane
     private:
         int fuel;
         int timeIn;
-        Airplane(int fuel, int timeIn);
     public:
+    	Airplane(int fuel, int timeIn);
     	int getFuel();
 	int getTimeIn();
 	bool isCrashed(int curTime);
-}
+};
 
 #endif
