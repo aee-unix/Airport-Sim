@@ -15,21 +15,31 @@
 // =====================================================================================
 
 #include "Queue.h"
+#include "stdlib.h"
 
+Queue::Queue()
+    : head(NULL)
+    , tail(NULL)
+{
+    // Blank body
+}
 
 bool Queue::isEmpty()
 {
-    //Blank body
+    // Blank body
+    return false;
 }
 void Queue::addNewPlane()
 {
-    //Blank body
+    // Blank body
 }
 AirNode* Queue::dequeue()
 {
-    //Blank body
+    // Blank body
+    return NULL;
 }
 AirNode* Queue::peek()
 {
-    //Blank body
+    // Blank body
+    return NULL;
 }

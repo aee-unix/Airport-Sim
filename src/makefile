@@ -6,7 +6,7 @@ AirportSim : Airplane.o Queue.o AirNode.o Runway.o StatKeeper.o BoolSource.o mai
 Airplane.o : Airplane.cpp Airplane.h
 	g++ -Wall -g -c Airplane.cpp
 Queue.o : Queue.cpp Queue.h
-	g++ -Wall -g -c Queue.h
+	g++ -Wall -g -c Queue.cpp
 AirNode.o : AirNode.cpp AirNode.h
 	g++ -Wall -g -c AirNode.cpp
 Runway.o : Runway.cpp Runway.h

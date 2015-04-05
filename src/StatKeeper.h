@@ -25,8 +25,8 @@ class StatKeeper
 	int takeoffs;
 	int landings;
 	int crashes;
-    	StatKeeper();
     public:
+    StatKeeper();
     	int getTotalTakeoffTime();
 	int getTotalLandingTime();
 	int getTakeoffs();
@@ -40,6 +40,6 @@ class StatKeeper
     	void incrementTime();
 	void printStats();
 	int getAverageTime();
-}
+};
 
 #endif

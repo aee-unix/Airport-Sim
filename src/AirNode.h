@@ -17,16 +17,18 @@
 #ifndef AIRNODE_H
 #define AIRNODE_H
 
+#include "Airplane.h"
+
 class AirNode
 {
     private:
 	Airplane* plane;
-	Airplane* nextplane;
-	AirNode(Airplane* p, Airplane* np);
+	AirNode* next;
     public:
+	AirNode(Airplane* p, AirNode* np);
     	Airplane* getPlane();
-	Airplane* getNextPlane();
-	void setNextPlane(Airplane* p);
-}
+	AirNode* getNext();
+	void setNext(AirNode* n);
+};
 
 #endif

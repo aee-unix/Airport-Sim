@@ -17,6 +17,9 @@
 #ifndef RUNWAY_H
 #define RUNWAY_H
 
+#include "Queue.h"
+#include "Airplane.h"
+
 class Runway
 {
     private:
@@ -29,6 +32,6 @@ class Runway
 	Queue* getTakeoffQueue();
 	int getTime();
     	void timestep();
-}
+};
 
 #endif

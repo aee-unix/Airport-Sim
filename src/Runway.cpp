@@ -16,23 +16,23 @@
 
 #include "Runway.h"
 
-Queue::Runway(Airplane* plane, int time)
+Runway::Runway(Airplane* plane, int time)
 {
     //Blank body
 }
-Airplane* Queue::getCurrentPlane()
+Airplane* Runway::getCurrentPlane()
 {
     //Blank body
 }
-Queue* Queue::getTakeoffQueue()
+Queue* Runway::getTakeoffQueue()
 {
     //Blank body
 }
-int Queue::getTime()
+int Runway::getTime()
 {
     //Blank body
 }
-void Queue::timestep()
+void Runway::timestep()
 {
     //Blank body
 }

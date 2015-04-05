@@ -18,23 +18,23 @@
 
 int StatKeeper::getTotalTakeoffTime()
 {
-    // Blank body
+    return totalTakeoffTime;
 }
 int StatKeeper::getTotalLandingTime()
 {
-    // Blank body
+    return totalLandingTime;
 }
 int StatKeeper::getTakeoffs()
 {
-    // Blank body
+    return takeoffs;
 }
 int StatKeeper::getLandings()
 {
-    // Blank body
+    return landings;
 }
 int StatKeeper::getCrashes()
 {
-    // Blank body
+    return crashes;
 }
 void StatKeeper::incrementTakeoffTime(int time)
 {
@@ -66,5 +66,5 @@ void StatKeeper::printStats()
 }
 int StatKeeper::getAverageTime()
 {
-    // Blank body
+    return (double)(totalTakeoffTime + totalLandingTime) / (landings + takeoffs + crashes);
 }

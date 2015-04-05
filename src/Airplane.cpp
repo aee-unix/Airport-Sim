@@ -22,15 +22,15 @@ Airplane::Airplane(int f, int t)
     timeIn = t;
 }
 
-Airplane::getFuel()
+int Airplane::getFuel()
 {
     return fuel;
 }
-Airplane::getTimeIn()
+int Airplane::getTimeIn()
 {
     return timeIn;
 }
-Airplane::isCrashed(int curTime)
+bool Airplane::isCrashed(int curTime)
 {
     if((curTime - timeIn) >= fuel)
     	return true;

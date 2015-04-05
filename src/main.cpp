@@ -3,7 +3,7 @@
 //Author: Anna McDougald (), texas.tiel@gmail.com
 //Purpose: Controls actions of AirportSim C++ project.
 
-#include<iosteam>
+#include <iostream>
 using namespace std;
 
 int main(){

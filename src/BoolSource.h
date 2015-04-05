@@ -21,6 +21,6 @@ class BoolSource
 {
     public:
 	bool randBool();
-}
+};
 
 #endif

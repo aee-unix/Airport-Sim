@@ -24,12 +24,12 @@ class Queue
     private:
 	AirNode* head;
 	AirNode* tail;
-	Queue(AirNode* h, AirNode* t);
     public:
+	Queue();
     	bool isEmpty();
 	void addNewPlane();
 	AirNode* dequeue();
 	AirNode* peek();
-}
+};
 
 #endif

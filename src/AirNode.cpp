@@ -16,17 +16,19 @@
 
 #include "AirNode.h"
 
-AirNode::getPlane()
+Airplane* AirNode::getPlane()
 {
     // Empty body
+    return plane;
 }
 
-AirNode::getNextPlane()
+AirNode* AirNode::getNext()
 {
     // Empty body
+    return next;
 }
 
-void AirPlane::setNextAirPlane(Airplane* p)
+void AirNode::setNext(AirNode* n)
 {
     // Empty body
 }
