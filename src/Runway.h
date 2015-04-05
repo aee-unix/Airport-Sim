@@ -30,7 +30,7 @@ class Runway
 	Runway(Airplane* plane, int time);
     	Airplane* getCurrentPlane();
 	Queue* getTakeoffQueue();
-	int getTime();
+	int getTimeRemaining();
     	void timestep();
 };
 

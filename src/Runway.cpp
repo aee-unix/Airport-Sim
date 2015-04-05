@@ -18,21 +18,24 @@
 
 Runway::Runway(Airplane* plane, int time)
 {
-    //Blank body
+    // Blank body
 }
 Airplane* Runway::getCurrentPlane()
 {
-    //Blank body
+    // Blank body
+    return currentPlane;
 }
 Queue* Runway::getTakeoffQueue()
 {
-    //Blank body
+    // Blank body
+    return &takeoffQueue;
 }
-int Runway::getTime()
+int Runway::getTimeRemaining()
 {
-    //Blank body
+    // Blank body
+    return timeRemaining;
 }
 void Runway::timestep()
 {
-    //Blank body
+    // Blank body
 }

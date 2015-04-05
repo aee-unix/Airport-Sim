@@ -19,4 +19,5 @@
 bool BoolSource::randBool()
 {
     // Empty body
+    return false;
 }
