@@ -12,7 +12,7 @@ if [ -f $HOME/.vimrc ]; then
 			cat vimrc >> $HOME/.vimrc
 			;;
 		*)
-			mv vimrc $HOME/.vimrc
+			cp vimrc $HOME/.vimrc
 			;;
 	esac
 else
