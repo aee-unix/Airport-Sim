@@ -18,24 +18,24 @@
 
 Runway::Runway(Airplane* plane, int time)
 {
-    // Blank body
+    currentPlane = plane;
+    timeRemaining = time;
 }
 Airplane* Runway::getCurrentPlane()
 {
-    // Blank body
     return currentPlane;
 }
 Queue* Runway::getTakeoffQueue()
 {
-    // Blank body
     return &takeoffQueue;
 }
 int Runway::getTimeRemaining()
 {
-    // Blank body
     return timeRemaining;
 }
 void Runway::timestep()
 {
-    // Blank body
+    //if plane is not landing, take plane from top of takeoff queue and make it
+    //the currentPlane
+    timeRemaining--;
 }
