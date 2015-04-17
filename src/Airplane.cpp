@@ -33,7 +33,7 @@ int Airplane::getTimeIn()
 bool Airplane::isCrashed(int curTime)
 {
     if((curTime - timeIn) >= fuel)
-    	return true;
+        return true;
     else
         return false;
 }
