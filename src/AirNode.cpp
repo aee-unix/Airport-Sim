@@ -30,5 +30,5 @@ AirNode* AirNode::getNext()
 
 void AirNode::setNext(AirNode* n)
 {
-    // Empty body
+    next = n;
 }
