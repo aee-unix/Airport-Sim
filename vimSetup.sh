@@ -7,12 +7,13 @@ git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 if [ -f $HOME/.vimrc ]; then
 	echo "Do you want to keep the old contents of your previous .vimrc? [y/n]"
 	read response
-	case $response
+	case $response in
 		y)
 			cat vimrc >> $HOME/.vimrc
 			;;
 		*)
 			mv vimrc $HOME/.vimrc
+			;;
 	esac
 else
 	mv vimrc $HOME/.vimrc
