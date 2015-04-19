@@ -24,13 +24,11 @@ AirNode::AirNode(Airplane* p, AirNode* np)
 
 Airplane* AirNode::getPlane()
 {
-    // Empty body
     return plane;
 }
 
 AirNode* AirNode::getNext()
 {
-    // Empty body
     return next;
 }
 
