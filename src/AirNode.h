@@ -29,6 +29,8 @@ class AirNode
     public:
     // Constructor for AirNode.
     AirNode(Airplane* p, AirNode* np);
+    // Destructor for AirNode.
+    ~AirNode();
     // Return the plane from the node.
     Airplane* getPlane();
     // Return the next node in the linked list.

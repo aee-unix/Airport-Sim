@@ -21,6 +21,10 @@ AirNode::AirNode(Airplane* p, AirNode* np)
     plane = p;
     next = np;
 }
+AirNode::~AirNode()
+{
+    if ( next ) delete next;
+}
 
 Airplane* AirNode::getPlane()
 {
