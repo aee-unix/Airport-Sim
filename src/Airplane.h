@@ -20,12 +20,18 @@
 class Airplane
 {
     private:
+    // Amount of fuel when the plane enters the airspace.
     int fuel;
+    // Time when the plane entered the airspace.
     int timeIn;
     public:
+    // Constructor for Airplane.
     Airplane(int fuel, int timeIn);
+    // Return the amount of fuel at the time the plane entered the airspace.
     int getFuel();
+    // Return the time that the plane entered the airspace.
     int getTimeIn();
+    // Return whether a plane has crashed due to lack of fuel at given time.
     bool isCrashed(int curTime);
 };
 

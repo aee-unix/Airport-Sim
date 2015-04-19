@@ -16,20 +16,24 @@
 
 #include "Airplane.h"
 
+// Airplane constructor.
 Airplane::Airplane(int f, int t)
 {
     fuel = f;
     timeIn = t;
 }
 
+// Return the amount of fuel at the time the plane entered the airspace.
 int Airplane::getFuel()
 {
     return fuel;
 }
+// Return the time that the plane entered the airspace.
 int Airplane::getTimeIn()
 {
     return timeIn;
 }
+// Return whether a plane has crashed due to lack of fuel at a given time.
 bool Airplane::isCrashed(int curTime)
 {
     if((curTime - timeIn) >= fuel)
