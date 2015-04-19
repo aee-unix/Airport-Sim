@@ -22,14 +22,14 @@
 class Queue
 {
     private:
-	AirNode* head;
-	AirNode* tail;
+    AirNode* head;
+    AirNode* tail;
     public:
-	Queue();
-    	bool isEmpty();
-	void addNewPlane();
-	AirNode* dequeue();
-	AirNode* peek();
+    Queue();
+    bool isEmpty();
+    void addNewPlane();
+    AirNode* dequeue();
+    AirNode* peek();
 };
 
 #endif

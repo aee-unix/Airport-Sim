@@ -7,6 +7,6 @@
 using namespace std;
 
 int main(){
-	cout << "Program successfully compiled!\n";
-	return 0;
+    cout << "Program successfully compiled!\n";
+    return 0;
 }

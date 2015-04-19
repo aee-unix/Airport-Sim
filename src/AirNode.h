@@ -22,13 +22,13 @@
 class AirNode
 {
     private:
-	Airplane* plane;
-	AirNode* next;
+    Airplane* plane;
+    AirNode* next;
     public:
-	AirNode(Airplane* p, AirNode* np);
-    	Airplane* getPlane();
-	AirNode* getNext();
-	void setNext(AirNode* n);
+    AirNode(Airplane* p, AirNode* np);
+    Airplane* getPlane();
+    AirNode* getNext();
+    void setNext(AirNode* n);
 };
 
 #endif

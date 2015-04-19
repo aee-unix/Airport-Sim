@@ -15,6 +15,8 @@
 // =====================================================================================
 
 #include "StatKeeper.h"
+#include <iostream>
+using namespace std;
 
 int StatKeeper::getTotalTakeoffTime()
 {
@@ -38,23 +40,23 @@ int StatKeeper::getCrashes()
 }
 void StatKeeper::incrementTakeoffTime(int time)
 {
-    // Blank body
+    totalTakeoffTime += time;
 }
 void StatKeeper::incrementLandingTime(int time)
 {
-    // Blank body
+    totalLandingTime += time;
 }
 void StatKeeper::setTakeoffs()
 {
-    // Blank body
+    takeoffs++; //increments number of takeoffs by 1
 }
 void StatKeeper::setLandings()
 {
-    // Blank body
+    landings++; //increments the number of landings by 1
 }
 void StatKeeper::setCrashes()
 {
-    // Blank body
+    crashes++; //increments the number of crashes by 1
 }
 void StatKeeper::incrementTime()
 {
@@ -62,9 +64,19 @@ void StatKeeper::incrementTime()
 }
 void StatKeeper::printStats()
 {
-    // Blank body
+    cout << "Total time spent on takeoffs: " << totalTakeoffTime;
+    cout << "\nTotal time spent on landings: " << totalLandingTime;
+    cout << "\nTotal number of takeoffs: " << takeoffs;
+    cout << "\nTotal number of landings: " << landings;
+    cout << "\nTotal number of crashes: " << crashes;
+    cout << "\nAverage wait to takeoff: " << getAverageTakeoffTime();
+    cout << "\nAverage wait to land: " << getAverageLandingTime();
 }
-int StatKeeper::getAverageTime()
+double StatKeeper::getAverageTakeoffTime()
 {
-    return (double)(totalTakeoffTime + totalLandingTime) / (landings + takeoffs + crashes);
+    return (double)(totalTakeoffTime) / (takeoffs);
+}
+double StatKeeper::getAverageLandingTime()
+{
+    return (double) (totalLandingTime) / (landings + crashes);
 }
