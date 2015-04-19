@@ -16,26 +16,30 @@
 
 #include "AirNode.h"
 
+// AirNode constructor.
 AirNode::AirNode(Airplane* p, AirNode* np)
 {
     plane = p;
     next = np;
 }
+// AirNode destructor.
 AirNode::~AirNode()
 {
     if ( next ) delete next;
 }
 
+// Return the plane from the node.
 Airplane* AirNode::getPlane()
 {
     return plane;
 }
-
+// Return the next node in the linked list.
 AirNode* AirNode::getNext()
 {
     return next;
 }
 
+// Set the next node in the linked list.
 void AirNode::setNext(AirNode* n)
 {
     next = n;
