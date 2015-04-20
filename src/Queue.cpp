@@ -14,24 +14,30 @@
 // 
 // =====================================================================================
 
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include "Queue.h"
-#include "stdlib.h"
 
 Queue::Queue()
     : planes(0)
 {
-    // Blank body
+    int pipes[2];
+    pipe(pipes);
+
+    inPipe = pipes[0];
+    outPipe = pipes[1];
 }
 
 Queue::~Queue()
 {
-    // Blank body
+    close(inPipe);
+    close(outPipe);
 }
 
 bool Queue::isEmpty()
 {
-    // Blank body
-    return false;
+    return ( planes <= 0 );
 }
 void Queue::addNewPlane()
 {
