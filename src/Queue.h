@@ -30,11 +30,11 @@ class Queue
     void lockOut();
     void unlockIn();
     void unlockOut();
+    bool isEmpty();
 
     public:
     Queue();
     ~Queue();
-    bool isEmpty();
     void addNewPlane(Airplane * airplane);
     Airplane dequeue();
 };
