@@ -1,0 +1,7 @@
+pipe queue design
+	keep track of how many planes were written and read
+	isEmpty() checks whether or not written and read values are equal
+	dequeue() reads off the queue
+	addNewPlane() writes to the queue
+	lock() calls flock(queue, LOCK_EX)
+	unlock() calls flock(queue, LOCK_UN)
