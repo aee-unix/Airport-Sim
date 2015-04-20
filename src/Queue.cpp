@@ -18,8 +18,12 @@
 #include "stdlib.h"
 
 Queue::Queue()
-    : head(NULL)
-    , tail(NULL)
+    : planes(0)
+{
+    // Blank body
+}
+
+Queue::~Queue()
 {
     // Blank body
 }
@@ -33,13 +37,8 @@ void Queue::addNewPlane()
 {
     // Blank body
 }
-AirNode* Queue::dequeue()
+Airplane Queue::dequeue()
 {
     // Blank body
-    return NULL;
-}
-AirNode* Queue::peek()
-{
-    // Blank body
-    return NULL;
+    return Airplane(0, 0);
 }
