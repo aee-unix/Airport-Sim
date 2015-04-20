@@ -41,12 +41,29 @@ bool Queue::isEmpty()
 }
 void Queue::addNewPlane(Airplane * airplane)
 {
-    // Blank body
+    lock();
+
+    write (inPipe, airplane, sizeof(*airplane));
+    ++planes;
+
+    unlock();
 }
 Airplane Queue::dequeue()
 {
-    // Blank body
-    return Airplane(0, 0);
+    if ( !isEmpty() )
+    {
+        return Airplane(-1, -1);
+    }
+
+    Airplane airplane(0, 0);
+
+    lock();
+
+    read(outPipe, &airplane, sizeof(airplane));
+
+    unlock();
+
+    return airplane;
 }
 
 void Queue::lock()
