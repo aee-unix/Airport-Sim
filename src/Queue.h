@@ -25,11 +25,15 @@ class Queue
     int inPipe;
     int outPipe;
     unsigned int planes;
+
+    void lock();
+    void unlock();
+
     public:
     Queue();
     ~Queue();
     bool isEmpty();
-    void addNewPlane();
+    void addNewPlane(Airplane * airplane);
     Airplane dequeue();
 };
 

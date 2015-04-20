@@ -39,7 +39,7 @@ bool Queue::isEmpty()
 {
     return ( planes <= 0 );
 }
-void Queue::addNewPlane()
+void Queue::addNewPlane(Airplane * airplane)
 {
     // Blank body
 }
@@ -47,4 +47,13 @@ Airplane Queue::dequeue()
 {
     // Blank body
     return Airplane(0, 0);
+}
+
+void Queue::lock()
+{
+    // Blank body
+}
+void Queue::unlock()
+{
+    // Blank body
 }
