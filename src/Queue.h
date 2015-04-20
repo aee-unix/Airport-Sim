@@ -26,8 +26,10 @@ class Queue
     int outPipe;
     unsigned int planes;
 
-    void lock();
-    void unlock();
+    void lockIn();
+    void lockOut();
+    void unlockIn();
+    void unlockOut();
 
     public:
     Queue();

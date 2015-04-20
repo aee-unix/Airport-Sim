@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <sys/file.h>
 #include "Queue.h"
 
 Queue::Queue()
@@ -41,36 +42,45 @@ bool Queue::isEmpty()
 }
 void Queue::addNewPlane(Airplane * airplane)
 {
-    lock();
+    lockIn();
 
     write (inPipe, airplane, sizeof(*airplane));
     ++planes;
 
-    unlock();
+    unlockIn();
 }
 Airplane Queue::dequeue()
 {
+    lockOut();
+
     if ( !isEmpty() )
     {
+        unlockOut();
         return Airplane(-1, -1);
     }
 
     Airplane airplane(0, 0);
 
-    lock();
-
     read(outPipe, &airplane, sizeof(airplane));
 
-    unlock();
+    unlockOut();
 
     return airplane;
 }
 
-void Queue::lock()
+void Queue::lockIn()
 {
-    // Blank body
+    flock(inPipe, LOCK_EX);
 }
-void Queue::unlock()
+void Queue::lockOut()
 {
-    // Blank body
+    flock(outPipe, LOCK_EX);
+}
+void Queue::unlockIn()
+{
+    flock(inPipe, LOCK_UN);
+}
+void Queue::unlockOut()
+{
+    flock(outPipe, LOCK_UN);
 }
