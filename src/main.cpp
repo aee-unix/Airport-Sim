@@ -49,8 +49,7 @@ int main(int argc, char *argv[]){
 
 	}
 
-	//Outputs number of planes
-	cout << "Number of planes: " << statkeeper.setcrashes();
+    statkeeper.printStats();
 
 	return 0;
 }
