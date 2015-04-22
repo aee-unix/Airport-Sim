@@ -13,12 +13,20 @@
 #include <stdlib.h>
 using namespace std;
 
-int main(int land, int takeoff, double probLand, double probTakeoff, int start, int stop, int crash){
+int main(int argc, char *argv[]){
    	//Checks if number of parameters is correct 
 	if (argc != 8){
 		cout << "Error! Invalid number of arguments.";
 		return 1;
 	}
+
+    int land = atoi(argv[1]);
+    int takeoff = atoi(argv[2]);
+    double probLand = atof(argv[3]);
+    double probTakeoff = atof(argv[4]);
+    int start = atoi(argv[5]);
+    int stop = atoi(argv[6]);
+    int crash = atoi(argv[7]);
 	
 	//Declare objects
 	Queue queue;
