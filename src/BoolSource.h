@@ -20,7 +20,7 @@
 class BoolSource
 {
     public:
-    bool randBool(double prob);
+    static bool randBool(double prob);
 };
 
 #endif

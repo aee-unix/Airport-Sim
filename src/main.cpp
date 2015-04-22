@@ -31,8 +31,6 @@ int main(int argc, char *argv[]){
 	//Declare objects
 	Queue queue;
 	StatKeeper statkeeper;
-	BoolSource boolLand;
-	BoolSource boolTakeoff;
 	Runway runway;
 
 	//Runs airport simulator
@@ -42,7 +40,7 @@ int main(int argc, char *argv[]){
 		int fuel = rand() % crash;
 
 		//If plane should land, land plane	
-		if (boolLand == true){
+		if (BoolSource::randBool(probLand) == true){
 			Airplane airplane = new Airplane(fuel, currentMinute);
 			queue.push(airplane);
 		}
