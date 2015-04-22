@@ -17,12 +17,13 @@
 #include "Runway.h"
 #include <cstdlib>
 
-Runway::Runway(Queue* queue, StatKeeper* stats, int tTime, int lTime)
+Runway::Runway(Queue* queue, StatKeeper* stats, int tTime, int lTime, int prob)
 {
 	landingQueue = queue;
 	runwayStats = stats;
 	timeToTakeoff = tTime;
 	timeToLand = lTime;
+	probTakeOff = prob;
 }
 AirNode* Runway::getCurrentPlane()
 {
