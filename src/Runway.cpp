@@ -29,6 +29,10 @@ Queue* Runway::getTakeoffQueue()
 {
     return &takeoffQueue;
 }
+Queue* Runway::getLandingQueue()
+{
+    return landingQueue;
+}
 int Runway::getTimeRemaining()
 {
     return timeRemaining;

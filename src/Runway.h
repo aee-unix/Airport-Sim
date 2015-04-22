@@ -24,12 +24,14 @@ class Runway
 {
     private:
     Queue takeoffQueue;
+    Queue* landingQueue;
     Airplane* currentPlane;
     int timeRemaining;
     public:
     Runway(Airplane* plane, int time);
     Airplane* getCurrentPlane();
     Queue* getTakeoffQueue();
+    Queue* getLandingQueue();
     int getTimeRemaining();
     void timestep();
 };
