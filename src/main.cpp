@@ -31,7 +31,7 @@ int main(int argc, char *argv[]){
 	//Declare objects
 	Queue queue;
 	StatKeeper statkeeper;
-	Runway runway;
+	Runway runway(NULL, 0);
 
 	//Runs airport simulator
 	for (int currentMinute = start; currentMinute > stop; --currentMinute){
