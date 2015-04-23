@@ -5,6 +5,8 @@ Plugin 'geppettodivacin/vim-geppetto'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'c.vim'
 
+call vundle#end()
+
 filetype on
 filetype indent on
 filetype plugin on
