@@ -1,6 +1,7 @@
 // Filename: BoolSource.cpp
 // Author: Elyse McCoy
 
+#include <cstdlib>
 #include "BoolSource.h"
 
 bool BoolSource::randBool(double prob)
