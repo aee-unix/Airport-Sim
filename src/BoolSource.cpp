@@ -1,23 +1,14 @@
-// =====================================================================================
-// 
-//       Filename:  BoolSource.cpp
-// 
-//    Description:  Source of random boolean values.
-// 
-//        Version:  1.0
-//        Created:  04/04/2015 02:13:12 AM
-//       Revision:  none
-//       Compiler:  g++
-// 
-//         Author:  Eric Dilmore (), ericdilmore@gmail.com
-//        Company:  
-// 
-// =====================================================================================
+// Filename: BoolSource.cpp
+// Author: Elyse McCoy
 
 #include "BoolSource.h"
 
-bool BoolSource::randBool()
+bool BoolSource::randBool(double prob)
 {
-    // Empty body
+    double value;
+    value = rand() % 1000;
+    if (value < prob * 1000){
+	    return true;
+    }
     return false;
 }
