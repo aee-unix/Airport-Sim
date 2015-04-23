@@ -16,7 +16,7 @@ if [ -f $HOME/.vimrc ]; then
 			;;
 	esac
 else
-	mv vimrc $HOME/.vimrc
+	cp vimrc $HOME/.vimrc
 fi
 
 vim -c PluginInstall
