@@ -15,13 +15,17 @@
 // =====================================================================================
 
 #include "Runway.h"
+#include <cstdlib>
 
-Runway::Runway(Airplane* plane, int time)
+Runway::Runway(Queue* queue, StatKeeper* stats, int tTime, int lTime, int prob)
 {
-    currentPlane = plane;
-    timeRemaining = time;
+	landingQueue = queue;
+	runwayStats = stats;
+	timeToTakeoff = tTime;
+	timeToLand = lTime;
+	probTakeoff = prob;
 }
-Airplane* Runway::getCurrentPlane()
+AirNode* Runway::getCurrentPlane()
 {
     return currentPlane;
 }
@@ -39,7 +43,34 @@ int Runway::getTimeRemaining()
 }
 void Runway::timestep()
 {
-    //if plane is not landing, take plane from top of takeoff queue and make it
-    //the currentPlane
-    timeRemaining--;
+	if(BoolSource::randBool(probTakeoff)) takeoffQueue.addNewPlane(); //adds plane to takeoffQueue randomly
+	if(timeRemaining == 0 && currentPlane == takeoffQueue.peek())
+	{
+		currentPlane = NULL;
+		runwayStats -> setTakeoffs(); //adds 1 to # of takeoffs
+		runwayStats -> incrementTakeoffTime(timeToTakeoff);
+		takeoffQueue.dequeue();
+		checkQueues();
+	}
+	else if(timeRemaining == 0 && currentPlane == landingQueue -> peek())
+	{
+		currentPlane = NULL;
+		runwayStats -> setLandings();
+		runwayStats -> incrementLandingTime(timeToLand);
+		landingQueue -> dequeue();
+		checkQueues();
+	}
+	else
+		timeRemaining--;
+}
+void Runway::checkQueues()
+{
+	if(landingQueue -> peek() != NULL){ 
+		currentPlane = landingQueue -> peek();
+		timeRemaining = timeToLand;
+	}
+	else if(takeoffQueue.peek() != NULL){
+		currentPlane = takeoffQueue.peek();
+		timeRemaining = timeToTakeoff;
+	}
 }
