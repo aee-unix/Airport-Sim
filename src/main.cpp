@@ -14,6 +14,9 @@
 using namespace std;
 
 int main(int argc, char *argv[]){
+    // Set seed for random number generation.
+    srand (time(NULL));
+
    	//Checks if number of parameters is correct 
 	if (argc != 8){
 		cout << "Error! Invalid number of arguments.";
@@ -36,7 +39,6 @@ int main(int argc, char *argv[]){
 	//Runs airport simulator
 	for (int currentMinute = start; currentMinute > stop; --currentMinute){
 	       	//Random time for fuel
-		srand (time(NULL));
 		int fuel = rand() % crash;
 
 		//If plane should land, land plane	
