@@ -43,7 +43,7 @@ int Runway::getTimeRemaining()
 }
 void Runway::timestep()
 {
-	if(BoolSource::randBool(probTakeoff)){ takeoffQueue.addNewPlane(); } //adds plane to takeoffQueue randomly
+	if(BoolSource::randBool(probTakeoff)) takeoffQueue.addNewPlane(); //adds plane to takeoffQueue randomly
 	if(timeRemaining == 0 && currentPlane == takeoffQueue.peek())
 	{
 		currentPlane = NULL;
