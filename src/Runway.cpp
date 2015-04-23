@@ -23,7 +23,7 @@ Runway::Runway(Queue* queue, StatKeeper* stats, int tTime, int lTime, int prob)
 	runwayStats = stats;
 	timeToTakeoff = tTime;
 	timeToLand = lTime;
-	probTakeOff = prob;
+	probTakeoff = prob;
 }
 AirNode* Runway::getCurrentPlane()
 {
