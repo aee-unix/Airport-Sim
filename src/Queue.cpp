@@ -11,6 +11,11 @@ Queue::Queue()
     // Blank body
 }
 
+Queue::~Queue()
+{
+    delete head;
+}
+
 // Tells user whether queue is empty or not
 bool Queue::isEmpty()
 {

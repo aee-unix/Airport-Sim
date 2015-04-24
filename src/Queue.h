@@ -25,6 +25,7 @@ class Queue
     AirNode* tail;
     public:
     Queue();
+    ~Queue();
     bool isEmpty();
     void addNewPlane(Airplane*);
     Airplane* dequeue();
