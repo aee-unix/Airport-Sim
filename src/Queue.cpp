@@ -1,18 +1,5 @@
-// =====================================================================================
-// 
-//       Filename:  Queue.cpp
-// 
-//    Description:  Queue for Airplanes.
-// 
-//        Version:  1.0
-//        Created:  04/04/2015 02:26:10 AM
-//       Revision:  none
-//       Compiler:  g++
-// 
-//         Author:  Eric Dilmore (), ericdilmore@gmail.com
-//        Company:  
-// 
-// =====================================================================================
+// Filename: Queue.cpp
+// Author: Elyse McCoy
 
 #include "Queue.h"
 #include "stdlib.h"
@@ -24,22 +11,53 @@ Queue::Queue()
     // Blank body
 }
 
+// Tells user whether queue is empty or not
 bool Queue::isEmpty()
 {
-    // Blank body
-    return false;
+    if (head == NULL)
+        return true;
+    else
+        return false;
 }
-void Queue::addNewPlane()
+
+// Adds airplane to queue
+void Queue::addNewPlane(Airplane* airplane)
 {
-    // Blank body
+    if (head == NULL){
+        AirNode* node = new AirNode(airplane, NULL);
+        head = node;
+        tail = node;
+    }
+    else{
+        AirNode* node = new AirNode(airplane, NULL);
+        tail->setNext(node);
+        tail = node;
+    }
 }
-AirNode* Queue::dequeue()
+
+// Removes airplane from queue
+Airplane* Queue::dequeue()
 {
-    // Blank body
-    return NULL;
+    if (head == NULL)
+        return NULL;
+    else{
+        AirNode* node = head;
+        head = head->getNext();
+        node->setNext(NULL);
+        Airplane* airplane = node->getPlane();
+        delete node;
+        return airplane;
+    }
 }
-AirNode* Queue::peek()
+
+// Returns first airplane in queue
+Airplane* Queue::peek()
 {
-    // Blank body
-    return NULL;
+    if (head == NULL)
+        return NULL;
+    else{
+        AirNode* node = head;
+        Airplane* airplane = node->getPlane();
+        return airplane;
+    }
 }

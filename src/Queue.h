@@ -1,4 +1,3 @@
-// =====================================================================================
 // 
 //       Filename:  Queue.h
 // 
@@ -9,7 +8,7 @@
 //       Revision:  None
 //       Compiler:  g++
 // 
-//         Author:  Anna McDougald (), texas.tiel@gmail.com
+//         Author:  Elyse McCoy
 //        Company:  
 // 
 // =====================================================================================
@@ -27,9 +26,9 @@ class Queue
     public:
     Queue();
     bool isEmpty();
-    void addNewPlane();
-    AirNode* dequeue();
-    AirNode* peek();
+    void addNewPlane(Airplane*);
+    Airplane* dequeue();
+    Airplane* peek();
 };
 
 #endif

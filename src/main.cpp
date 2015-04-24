@@ -34,7 +34,7 @@ int main(int argc, char *argv[]){
 	//Declare objects
 	Queue queue;
 	StatKeeper statkeeper;
-	Runway runway(NULL, 0);
+	Runway runway(&queue, &statkeeper, takeoff, land, probTakeoff);
 
 	//Runs airport simulator
 	for (int currentMinute = start; currentMinute > stop; --currentMinute){
@@ -43,8 +43,8 @@ int main(int argc, char *argv[]){
 
 		//If plane should land, land plane	
 		if (BoolSource::randBool(probLand) == true){
-			Airplane airplane = new Airplane(fuel, currentMinute);
-			queue.push(airplane);
+			Airplane* airplane = new Airplane(fuel, currentMinute);
+			queue.addNewPlane(airplane);
 		}
 
 		runway.timestep();
