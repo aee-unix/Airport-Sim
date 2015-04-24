@@ -23,6 +23,7 @@ Runway::Runway(Queue* queue, int tTime, int lTime, int prob)
     timeToTakeoff = tTime;
     timeToLand = lTime;
     probTakeoff = prob;
+    currentPlane = NULL;
 }
 Airplane* Runway::getCurrentPlane()
 {
