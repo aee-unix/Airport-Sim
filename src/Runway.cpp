@@ -19,13 +19,13 @@
 
 Runway::Runway(Queue* queue, StatKeeper* stats, int tTime, int lTime, int prob)
 {
-	landingQueue = queue;
-	runwayStats = stats;
-	timeToTakeoff = tTime;
-	timeToLand = lTime;
-	probTakeoff = prob;
+    landingQueue = queue;
+    runwayStats = stats;
+    timeToTakeoff = tTime;
+    timeToLand = lTime;
+    probTakeoff = prob;
 }
-AirNode* Runway::getCurrentPlane()
+Airplane* Runway::getCurrentPlane()
 {
     return currentPlane;
 }
@@ -43,34 +43,36 @@ int Runway::getTimeRemaining()
 }
 void Runway::timestep()
 {
-	if(BoolSource::randBool(probTakeoff)) takeoffQueue.addNewPlane(); //adds plane to takeoffQueue randomly
-	if(timeRemaining == 0 && currentPlane == takeoffQueue.peek())
-	{
-		currentPlane = NULL;
-		runwayStats -> setTakeoffs(); //adds 1 to # of takeoffs
-		runwayStats -> incrementTakeoffTime(timeToTakeoff);
-		takeoffQueue.dequeue();
-		checkQueues();
-	}
-	else if(timeRemaining == 0 && currentPlane == landingQueue -> peek())
-	{
-		currentPlane = NULL;
-		runwayStats -> setLandings();
-		runwayStats -> incrementLandingTime(timeToLand);
-		landingQueue -> dequeue();
-		checkQueues();
-	}
-	else
-		timeRemaining--;
+    //adds plane to takeoffQueue randomly
+    if(BoolSource::randBool(probTakeoff))
+        takeoffQueue.addNewPlane(new Airplane(0, StatKeeper::getWorldTime()));
+    if(timeRemaining == 0 && currentPlane == takeoffQueue.peek())
+    {
+        currentPlane = NULL;
+        runwayStats -> setTakeoffs(); //adds 1 to # of takeoffs
+        runwayStats -> incrementTakeoffTime(timeToTakeoff);
+        takeoffQueue.dequeue();
+        checkQueues();
+    }
+    else if(timeRemaining == 0 && currentPlane == landingQueue -> peek())
+    {
+        currentPlane = NULL;
+        runwayStats -> setLandings();
+        runwayStats -> incrementLandingTime(timeToLand);
+        landingQueue -> dequeue();
+        checkQueues();
+    }
+    else
+        timeRemaining--;
 }
 void Runway::checkQueues()
 {
-	if(landingQueue -> peek() != NULL){ 
-		currentPlane = landingQueue -> peek();
-		timeRemaining = timeToLand;
-	}
-	else if(takeoffQueue.peek() != NULL){
-		currentPlane = takeoffQueue.peek();
-		timeRemaining = timeToTakeoff;
-	}
+    if(landingQueue -> peek() != NULL){ 
+        currentPlane = landingQueue -> peek();
+        timeRemaining = timeToLand;
+    }
+    else if(takeoffQueue.peek() != NULL){
+        currentPlane = takeoffQueue.peek();
+        timeRemaining = timeToTakeoff;
+    }
 }

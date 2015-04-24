@@ -28,14 +28,14 @@ class Runway
     Queue takeoffQueue;
     Queue* landingQueue;
     StatKeeper* runwayStats;
-    AirNode* currentPlane;
+    Airplane* currentPlane;
     int timeRemaining;
     int timeToTakeoff;
     int timeToLand;
     double probTakeoff;
     public:
     Runway(Queue* queue, StatKeeper* stats, int tTime, int lTime, int prob);
-    AirNode* getCurrentPlane();
+    Airplane* getCurrentPlane();
     Queue* getTakeoffQueue();
     Queue* getLandingQueue();
     int getTimeRemaining();
