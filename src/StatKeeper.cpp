@@ -18,6 +18,13 @@
 #include <iostream>
 using namespace std;
 
+StatKeeper::totalTakeoffTime = 0;
+StatKeeper::totalLandingTime = 0;
+StatKeeper::takeoffs = 0;
+StatKeeper::landings = 0;
+StatKeeper::crashes = 0;
+StatKeeper::worldTime = 0;
+
 int StatKeeper::getTotalTakeoffTime()
 {
     return totalTakeoffTime;
@@ -37,6 +44,10 @@ int StatKeeper::getLandings()
 int StatKeeper::getCrashes()
 {
     return crashes;
+}
+int StatKeeper::getWorldTime()
+{
+    return worldTime;
 }
 void StatKeeper::incrementTakeoffTime(int time)
 {
@@ -58,9 +69,14 @@ void StatKeeper::setCrashes()
 {
     crashes++; //increments the number of crashes by 1
 }
+void StatKeeper::setWorldTime(int time)
+{
+    worldTime = time;
+}
+}
 void StatKeeper::incrementTime()
 {
-    // Blank body
+    worldTime--;
 }
 void StatKeeper::printStats()
 {
