@@ -62,6 +62,11 @@ void Runway::checkQueues()
     if(landingQueue -> peek() != NULL){ 
         currentPlane = landingQueue -> dequeue();
         timeRemaining = timeToLand;
+        if(currentPlane -> isCrashed(StatKeeper::getWorldTime())){
+            currentPlane = NULL;
+            StatKeeper::setCrashes();
+            return;
+        }
         StatKeeper::setLandings();
         StatKeeper::incrementLandingTime(timeToLand);
     }
