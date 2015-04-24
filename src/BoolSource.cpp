@@ -7,8 +7,8 @@
 bool BoolSource::randBool(double prob)
 {
     double value;
-    value = rand() % 1000;
-    if (value < prob * 1000){
+    value = rand() % 1009;
+    if (value < prob * 1009){
 	    return true;
     }
     return false;
