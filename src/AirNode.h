@@ -37,6 +37,7 @@ class AirNode
     AirNode* getNext();
     // Set the next node in the linked list.
     void setNext(AirNode* n);
+    void setPlane(Airplane* p);
 };
 
 #endif

@@ -26,6 +26,7 @@ AirNode::AirNode(Airplane* p, AirNode* np)
 AirNode::~AirNode()
 {
     if ( next ) delete next;
+    if ( plane ) delete plane;
 }
 
 // Return the plane from the node.
@@ -43,4 +44,9 @@ AirNode* AirNode::getNext()
 void AirNode::setNext(AirNode* n)
 {
     next = n;
+}
+// Set the next node in the linked list.
+void AirNode::setPlane(Airplane* p)
+{
+    plane = p;
 }

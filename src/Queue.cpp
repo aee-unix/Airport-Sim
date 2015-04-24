@@ -48,8 +48,9 @@ Airplane* Queue::dequeue()
     else{
         AirNode* node = head;
         head = head->getNext();
-        node->setNext(NULL);
         Airplane* airplane = node->getPlane();
+        node->setNext(NULL);
+        node->setPlane(NULL);
         delete node;
         return airplane;
     }
