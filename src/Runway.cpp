@@ -17,7 +17,7 @@
 #include "Runway.h"
 #include <cstdlib>
 
-Runway::Runway(Queue* queue, int tTime, int lTime, int prob)
+Runway::Runway(Queue* queue, int tTime, int lTime, double prob)
 {
     landingQueue = queue;
     timeToTakeoff = tTime;
