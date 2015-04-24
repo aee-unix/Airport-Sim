@@ -64,6 +64,7 @@ void Runway::checkQueues()
         currentPlane = landingQueue -> dequeue();
         timeRemaining = timeToLand;
         if(currentPlane -> isCrashed(StatKeeper::getWorldTime())){
+            delete currentPlane;
             currentPlane = NULL;
             StatKeeper::setCrashes();
             return;
