@@ -34,7 +34,7 @@ int main(int argc, char *argv[]){
 	//Declare objects
 	Queue queue;
 	StatKeeper statkeeper;
-	Runway runway(&queue, &statkeeper, takeoff, land, probTakeoff);
+	Runway runway(&queue, takeoff, land, probTakeoff);
 
 	//Runs airport simulator
 	for (statkeeper.setWorldTime(start); statkeeper.getWorldTime() > stop; statkeeper.incrementTime()){
@@ -43,7 +43,7 @@ int main(int argc, char *argv[]){
 
 		//If plane should land, land plane	
 		if (BoolSource::randBool(probLand) == true){
-			Airplane* airplane = new Airplane(fuel, currentMinute);
+			Airplane* airplane = new Airplane(fuel, statkeeper.getWorldTime());
 			queue.addNewPlane(airplane);
 		}
 
