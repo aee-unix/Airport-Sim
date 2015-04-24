@@ -19,13 +19,14 @@
 
 class StatKeeper
 {
-    public:
+    private:
     static int totalTakeoffTime;
     static int totalLandingTime;
     static int takeoffs;
     static int landings;
     static int crashes;
     static int worldTime;
+    public:
     static int getTotalTakeoffTime();
     static int getTotalLandingTime();
     static int getTakeoffs();
