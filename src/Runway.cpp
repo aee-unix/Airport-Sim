@@ -68,12 +68,12 @@ void Runway::checkQueues()
             return;
         }
         StatKeeper::setLandings();
-        StatKeeper::incrementLandingTime((currentPlane -> getPlane() -> getTimeIn()) - StatKeeper::getWorldTime());
+        StatKeeper::incrementLandingTime((currentPlane -> getTimeIn()) - StatKeeper::getWorldTime());
     }
     else if(takeoffQueue.peek() != NULL){
         currentPlane = takeoffQueue.dequeue();
         timeRemaining = timeToTakeoff;
         StatKeeper::setTakeoffs();
-        StatKeeper::incrementTakeoffTime((currentPlane -> getPlane() -> getTimeIn()) - StatKeeper::getWorldTime());
+        StatKeeper::incrementTakeoffTime((currentPlane -> getTimeIn()) - StatKeeper::getWorldTime());
     }
 }
