@@ -35,6 +35,7 @@ class Runway
     double probTakeoff;
     public:
     Runway(Queue* queue, int tTime, int lTime, double prob);
+    ~Runway();
     Airplane* getCurrentPlane();
     Queue* getTakeoffQueue();
     Queue* getLandingQueue();

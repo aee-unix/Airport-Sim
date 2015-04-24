@@ -26,6 +26,10 @@ Runway::Runway(Queue* queue, int tTime, int lTime, double prob)
     probTakeoff = prob;
     currentPlane = NULL;
 }
+Runway::~Runway()
+{
+    delete currentPlane;
+}
 Airplane* Runway::getCurrentPlane()
 {
     return currentPlane;
