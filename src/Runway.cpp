@@ -44,20 +44,20 @@ int Runway::getTimeRemaining()
 void Runway::timestep()
 {
 	if(BoolSource::randBool(probTakeoff)) takeoffQueue.addNewPlane(); //adds plane to takeoffQueue randomly
-	if(timeRemaining == 0 && currentPlane == takeoffQueue.peek())
+	if(timeRemaining == 0 && currentPlane == landingQueue -> peek())
 	{
 		currentPlane = NULL;
-		runwayStats -> setTakeoffs(); //adds 1 to # of takeoffs
-		runwayStats -> incrementTakeoffTime(timeToTakeoff);
-		takeoffQueue.dequeue();
+        StatKeeper::setLandings(); //adds 1 to # of takeoffs
+        StatKeeper::incrementLandingTime(timeToLand);
+		landingQueue -> dequeue();
 		checkQueues();
 	}
-	else if(timeRemaining == 0 && currentPlane == landingQueue -> peek())
+	else if(timeRemaining == 0 && currentPlane == takeoffQueue.peek())
 	{
 		currentPlane = NULL;
-		runwayStats -> setLandings();
-		runwayStats -> incrementLandingTime(timeToLand);
-		landingQueue -> dequeue();
+        StatKeeper::setTakeoffs();
+        StatKeeper::incrementTakeoffTime(timeToTakeoff);
+		takeoffQueue.dequeue();
 		checkQueues();
 	}
 	else
