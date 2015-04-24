@@ -18,12 +18,12 @@
 #include <iostream>
 using namespace std;
 
-StatKeeper::totalTakeoffTime = 0;
-StatKeeper::totalLandingTime = 0;
-StatKeeper::takeoffs = 0;
-StatKeeper::landings = 0;
-StatKeeper::crashes = 0;
-StatKeeper::worldTime = 0;
+int StatKeeper::totalTakeoffTime = 0;
+int StatKeeper::totalLandingTime = 0;
+int StatKeeper::takeoffs = 0;
+int StatKeeper::landings = 0;
+int StatKeeper::crashes = 0;
+int StatKeeper::worldTime = 0;
 
 int StatKeeper::getTotalTakeoffTime()
 {
@@ -72,7 +72,6 @@ void StatKeeper::setCrashes()
 void StatKeeper::setWorldTime(int time)
 {
     worldTime = time;
-}
 }
 void StatKeeper::incrementTime()
 {
