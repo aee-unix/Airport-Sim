@@ -19,6 +19,7 @@
 
 Runway::Runway(Queue* queue, int tTime, int lTime, double prob)
 {
+    timeRemaining = 0;
     landingQueue = queue;
     timeToTakeoff = tTime;
     timeToLand = lTime;
