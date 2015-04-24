@@ -24,6 +24,7 @@ int StatKeeper::takeoffs = 0;
 int StatKeeper::landings = 0;
 int StatKeeper::crashes = 0;
 int StatKeeper::worldTime = 0;
+int StatKeeper::totalSimTime = 0;
 
 int StatKeeper::getTotalTakeoffTime()
 {
@@ -72,6 +73,7 @@ void StatKeeper::setCrashes()
 void StatKeeper::setWorldTime(int time)
 {
     worldTime = time;
+    totalSimTime = time;
 }
 void StatKeeper::incrementTime()
 {
@@ -79,13 +81,12 @@ void StatKeeper::incrementTime()
 }
 void StatKeeper::printStats()
 {
-    cout << "Total time spent on takeoffs: " << totalTakeoffTime;
-    cout << "\nTotal time spent on landings: " << totalLandingTime;
-    cout << "\nTotal number of takeoffs: " << takeoffs;
-    cout << "\nTotal number of landings: " << landings;
-    cout << "\nTotal number of crashes: " << crashes;
-    cout << "\nAverage wait to takeoff: " << getAverageTakeoffTime();
-    cout << "\nAverage wait to land: " << getAverageLandingTime();
+    cout << "Total simulation time :: " << totalSimTime;
+    cout << "\nNumber of takeoffs :: " << takeoffs;
+    cout << "\nNumber of landings :: " << landings;
+    cout << "\nNumber of crashes :: " << crashes;
+    cout << "\nAverage time spent in takeoff queue :: " << getAverageTakeoffTime() << " cycles";
+    cout << "\nAverage time spent in landing queue :: " << getAverageLandingTime() << " cycles\n";
 }
 double StatKeeper::getAverageTakeoffTime()
 {
