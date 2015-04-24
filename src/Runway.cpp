@@ -45,33 +45,29 @@ void Runway::timestep()
     //adds plane to takeoffQueue randomly
     if(BoolSource::randBool(probTakeoff))
         takeoffQueue.addNewPlane(new Airplane(0, StatKeeper::getWorldTime()));
-	if(timeRemaining == 0 && currentPlane == landingQueue -> peek())
-	{
-		currentPlane = NULL;
-        StatKeeper::setLandings(); //adds 1 to # of takeoffs
-        StatKeeper::incrementLandingTime(timeToLand);
-		landingQueue -> dequeue();
-		checkQueues();
-	}
-	else if(timeRemaining == 0 && currentPlane == takeoffQueue.peek())
-	{
-		currentPlane = NULL;
-        StatKeeper::setTakeoffs();
-        StatKeeper::incrementTakeoffTime(timeToTakeoff);
-		takeoffQueue.dequeue();
-		checkQueues();
-	}
-	else
-		timeRemaining--;
+	if(timeRemaining > 0 && currentPlane != NULL) timeRemaining--;
+    else if(currentPlane == NULL)
+    {
+        checkQueues();
+    }
+    if(timeRemaining == 0)
+    {
+        delete currentPlane;
+        currentPlane = NULL;
+    }
 }
 void Runway::checkQueues()
 {
     if(landingQueue -> peek() != NULL){ 
-        currentPlane = landingQueue -> peek();
+        currentPlane = landingQueue -> dequeue();
         timeRemaining = timeToLand;
+        StatKeeper::setLandings();
+        StatKeeper::incrementLandingTime(timeToLand);
     }
     else if(takeoffQueue.peek() != NULL){
-        currentPlane = takeoffQueue.peek();
+        currentPlane = takeoffQueue.dequeue();
         timeRemaining = timeToTakeoff;
+        StatKeeper::setTakeoffs();
+        StatKeeper::incrementTakeoffTime(timeToTakeoff);
     }
 }
