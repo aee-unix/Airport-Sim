@@ -17,10 +17,9 @@
 #include "Runway.h"
 #include <cstdlib>
 
-Runway::Runway(Queue* queue, StatKeeper* stats, int tTime, int lTime, int prob)
+Runway::Runway(Queue* queue, int tTime, int lTime, int prob)
 {
     landingQueue = queue;
-    runwayStats = stats;
     timeToTakeoff = tTime;
     timeToLand = lTime;
     probTakeoff = prob;
@@ -46,24 +45,24 @@ void Runway::timestep()
     //adds plane to takeoffQueue randomly
     if(BoolSource::randBool(probTakeoff))
         takeoffQueue.addNewPlane(new Airplane(0, StatKeeper::getWorldTime()));
-    if(timeRemaining == 0 && currentPlane == takeoffQueue.peek())
-    {
-        currentPlane = NULL;
-        runwayStats -> setTakeoffs(); //adds 1 to # of takeoffs
-        runwayStats -> incrementTakeoffTime(timeToTakeoff);
-        takeoffQueue.dequeue();
-        checkQueues();
-    }
-    else if(timeRemaining == 0 && currentPlane == landingQueue -> peek())
-    {
-        currentPlane = NULL;
-        runwayStats -> setLandings();
-        runwayStats -> incrementLandingTime(timeToLand);
-        landingQueue -> dequeue();
-        checkQueues();
-    }
-    else
-        timeRemaining--;
+	if(timeRemaining == 0 && currentPlane == landingQueue -> peek())
+	{
+		currentPlane = NULL;
+        StatKeeper::setLandings(); //adds 1 to # of takeoffs
+        StatKeeper::incrementLandingTime(timeToLand);
+		landingQueue -> dequeue();
+		checkQueues();
+	}
+	else if(timeRemaining == 0 && currentPlane == takeoffQueue.peek())
+	{
+		currentPlane = NULL;
+        StatKeeper::setTakeoffs();
+        StatKeeper::incrementTakeoffTime(timeToTakeoff);
+		takeoffQueue.dequeue();
+		checkQueues();
+	}
+	else
+		timeRemaining--;
 }
 void Runway::checkQueues()
 {
