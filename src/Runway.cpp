@@ -54,8 +54,7 @@ void Runway::timestep()
 	if(timeRemaining > 0 && currentPlane != NULL) timeRemaining--;
     else if(currentPlane == NULL)
     {
-        while(!currentPlane && !landingQueue->isEmpty() && !takeoffQueue.isEmpty())
-            checkQueues();
+        checkQueues();
     }
     if(timeRemaining == 0)
     {
