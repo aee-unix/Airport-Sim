@@ -37,7 +37,7 @@ int main(int argc, char *argv[]){
 	Runway runway(&queue, &statkeeper, takeoff, land, probTakeoff);
 
 	//Runs airport simulator
-	for (int currentMinute = start; currentMinute > stop; --currentMinute){
+	for (statkeeper.setWorldTime(start); statkeeper.getWorldTime() > stop; statkeeper.incrementTime()){
 	       	//Random time for fuel
 		int fuel = rand() % crash;
 
@@ -48,7 +48,6 @@ int main(int argc, char *argv[]){
 		}
 
 		runway.timestep();
-
 	}
 
     statkeeper.printStats();
