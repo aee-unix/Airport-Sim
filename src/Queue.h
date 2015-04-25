@@ -25,17 +25,17 @@ class Queue
     int readPipe;
     unsigned int planes;
 
-    void lockWrite();
-    void lockRead();
-    void unlockWrite();
-    void unlockRead();
-
     public:
     Queue();
     ~Queue();
 	bool isEmpty();
     void addNewPlane(Airplane * airplane);
     Airplane * dequeue();
+
+    void lockWrite();
+    void lockRead();
+    void unlockWrite();
+    void unlockRead();
 };
 
 #endif
