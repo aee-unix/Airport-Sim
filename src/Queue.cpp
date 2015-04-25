@@ -49,7 +49,7 @@ Airplane * Queue::dequeue()
 
     Airplane * airplane = new Airplane(0, 0);
 
-    read(outPipe, &airplane, sizeof(airplane));
+    read(outPipe, airplane, sizeof(*airplane));
 
     unlockOut();
 
