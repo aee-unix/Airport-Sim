@@ -32,3 +32,8 @@ void RunwayProc::run()
 {
     // Empty body
 }
+
+int RunwayProc::getPid()
+{
+    return pid;
+}

@@ -25,9 +25,11 @@ class RunwayProc
     private:
     Runway runway;
     int sigFd;
+    int pid;
     public:
     RunwayProc(Queue* queue, int tTime, int lTime, double prob, int fd);
     void run();
+    int getPid();
 }
 
 #endif
