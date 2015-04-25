@@ -4,7 +4,7 @@
 //Purpose: Controls actions of AirportSim C++ project.
 
 #include <iostream>
-#include "AirNode.h"
+#include "Node.h"
 #include "Airplane.h"
 #include "BoolSource.h"
 #include "Queue.h"

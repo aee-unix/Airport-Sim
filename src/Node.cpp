@@ -1,8 +1,8 @@
 // =====================================================================================
 // 
-//       Filename:  AirNode.cpp
+//       Filename:  Node.cpp
 // 
-//    Description:  Node for Queue holding airplanes
+//    Description:  Node for the Queue
 // 
 //        Version:  1.0
 //        Created:  04/04/2015 01:44:47 AM
@@ -14,7 +14,7 @@
 // 
 // =====================================================================================
 
-#include "AirNode.h"
+#include "Node.h"
 
 // AirNode constructor.
 AirNode::AirNode(Airplane* p, AirNode* np)

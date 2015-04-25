@@ -20,7 +20,6 @@
 #include "Queue.h"
 #include "StatKeeper.h"
 #include "BoolSource.h"
-#include "AirNode.h"
 
 class Runway
 {

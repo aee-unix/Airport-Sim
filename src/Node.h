@@ -1,8 +1,8 @@
 // =====================================================================================
 // 
-//       Filename:  AirNode.h
+//       Filename:  Node.h
 // 
-//    Description:  Header for AirNode class.
+//    Description:  Header for Node class.
 // 
 //        Version:  1.0
 //        Created:  04/02/2015 09:33:00 PM
