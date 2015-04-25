@@ -13,14 +13,14 @@ Queue::Queue()
     int pipes[2];
     pipe(pipes);
 
-    inPipe = pipes[0];
-    outPipe = pipes[1];
+    writePipe = pipes[1];
+    readPipe = pipes[0];
 }
 
 Queue::~Queue()
 {
-    close(inPipe);
-    close(outPipe);
+    close(writePipe);
+    close(readPipe);
 }
 
 // Tells user whether queue is empty or not
@@ -30,45 +30,36 @@ bool Queue::isEmpty()
 }
 void Queue::addNewPlane(Airplane * airplane)
 {
-    lockIn();
-
-    write (inPipe, airplane, sizeof(*airplane));
+    write (writePipe, airplane, sizeof(*airplane));
     ++planes;
-
-    unlockIn();
 }
 Airplane * Queue::dequeue()
 {
-    lockOut();
-
     if ( isEmpty() )
     {
-        unlockOut();
         return NULL;
     }
 
     Airplane * airplane = new Airplane(0, 0);
 
-    read(outPipe, airplane, sizeof(*airplane));
-
-    unlockOut();
+    read(readPipe, airplane, sizeof(*airplane));
 
     return airplane;
 }
 
-void Queue::lockIn()
+void Queue::lockWrite()
 {
-    flock(inPipe, LOCK_EX);
+    flock(writePipe, LOCK_EX);
 }
-void Queue::lockOut()
+void Queue::lockRead()
 {
-    flock(outPipe, LOCK_EX);
+    flock(readPipe, LOCK_EX);
 }
-void Queue::unlockIn()
+void Queue::unlockWrite()
 {
-    flock(inPipe, LOCK_UN);
+    flock(writePipe, LOCK_UN);
 }
-void Queue::unlockOut()
+void Queue::unlockRead()
 {
-    flock(outPipe, LOCK_UN);
+    flock(readPipe, LOCK_UN);
 }

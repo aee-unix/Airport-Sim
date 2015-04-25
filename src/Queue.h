@@ -21,14 +21,14 @@
 class Queue
 {
     private:
-    int inPipe;
-    int outPipe;
+    int writePipe;
+    int readPipe;
     unsigned int planes;
 
-    void lockIn();
-    void lockOut();
-    void unlockIn();
-    void unlockOut();
+    void lockWrite();
+    void lockRead();
+    void unlockWrite();
+    void unlockRead();
 
     public:
     Queue();
