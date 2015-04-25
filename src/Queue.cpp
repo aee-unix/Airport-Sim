@@ -41,7 +41,7 @@ Airplane * Queue::dequeue()
 {
     lockOut();
 
-    if ( !isEmpty() )
+    if ( isEmpty() )
     {
         unlockOut();
         return NULL;
