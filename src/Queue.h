@@ -21,8 +21,8 @@
 class Queue
 {
     private:
-    AirNode* head;
-    AirNode* tail;
+    Node* head;
+    Node* tail;
     public:
     Queue();
     ~Queue();
