@@ -1,69 +1,74 @@
 // Filename: Queue.cpp
 // Author: Elyse McCoy
 
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/file.h>
 #include "Queue.h"
-#include "stdlib.h"
 
 Queue::Queue()
-    : head(NULL)
-    , tail(NULL)
+    : planes(0)
 {
-    // Blank body
+    int pipes[2];
+    pipe(pipes);
+
+    inPipe = pipes[0];
+    outPipe = pipes[1];
 }
 
 Queue::~Queue()
 {
-    delete head;
+    close(inPipe);
+    close(outPipe);
 }
 
 // Tells user whether queue is empty or not
 bool Queue::isEmpty()
 {
-    if (head == NULL)
-        return true;
-    else
-        return false;
+    return ( planes <= 0 );
 }
-
-// Adds airplane to queue
-void Queue::addNewPlane(Airplane* airplane)
+void Queue::addNewPlane(Airplane * airplane)
 {
-    if (head == NULL){
-        AirNode* node = new AirNode(airplane, NULL);
-        head = node;
-        tail = node;
-    }
-    else{
-        AirNode* node = new AirNode(airplane, NULL);
-        tail->setNext(node);
-        tail = node;
-    }
+    lockIn();
+
+    write (inPipe, airplane, sizeof(*airplane));
+    ++planes;
+
+    unlockIn();
 }
-
-// Removes airplane from queue
-Airplane* Queue::dequeue()
+Airplane * Queue::dequeue()
 {
-    if (head == NULL)
+    lockOut();
+
+    if ( !isEmpty() )
+    {
+        unlockOut();
         return NULL;
-    else{
-        AirNode* node = head;
-        head = head->getNext();
-        Airplane* airplane = node->getPlane();
-        node->setNext(NULL);
-        node->setPlane(NULL);
-        delete node;
-        return airplane;
     }
+
+    Airplane * airplane = new Airplane(0, 0);
+
+    read(outPipe, &airplane, sizeof(airplane));
+
+    unlockOut();
+
+    return airplane;
 }
 
-// Returns first airplane in queue
-Airplane* Queue::peek()
+void Queue::lockIn()
 {
-    if (head == NULL)
-        return NULL;
-    else{
-        AirNode* node = head;
-        Airplane* airplane = node->getPlane();
-        return airplane;
-    }
+    flock(inPipe, LOCK_EX);
+}
+void Queue::lockOut()
+{
+    flock(outPipe, LOCK_EX);
+}
+void Queue::unlockIn()
+{
+    flock(inPipe, LOCK_UN);
+}
+void Queue::unlockOut()
+{
+    flock(outPipe, LOCK_UN);
 }

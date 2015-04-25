@@ -1,0 +1,6 @@
+Runway with multiple processes
+	run() method that does the processing
+	start() method that creates the new process and returns the pid
+	run() method is called from within the start() method
+send signals to pid == 0, which will go to the parent's process group
+	if this does not work, keep track of the pids in the parent process to send signals to

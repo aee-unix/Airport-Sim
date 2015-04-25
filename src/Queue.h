@@ -16,20 +16,26 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include "AirNode.h"
+#include "Airplane.h"
 
 class Queue
 {
     private:
-    AirNode* head;
-    AirNode* tail;
+    int inPipe;
+    int outPipe;
+    unsigned int planes;
+
+    void lockIn();
+    void lockOut();
+    void unlockIn();
+    void unlockOut();
+
     public:
     Queue();
     ~Queue();
-    bool isEmpty();
-    void addNewPlane(Airplane*);
-    Airplane* dequeue();
-    Airplane* peek();
+	bool isEmpty();
+    void addNewPlane(Airplane * airplane);
+    Airplane * dequeue();
 };
 
 #endif
