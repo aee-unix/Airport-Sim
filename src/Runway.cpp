@@ -64,7 +64,7 @@ void Runway::timestep()
 }
 void Runway::checkQueues()
 {
-    if(landingQueue -> peek() != NULL){ 
+    if(!landingQueue -> isEmpty()){ 
         currentPlane = landingQueue -> dequeue();
         timeRemaining = timeToLand;
         if(currentPlane -> isCrashed(StatKeeper::getWorldTime())){
@@ -76,7 +76,7 @@ void Runway::checkQueues()
         StatKeeper::setLandings();
         StatKeeper::incrementLandingTime((currentPlane -> getTimeIn()) - StatKeeper::getWorldTime());
     }
-    else if(takeoffQueue.peek() != NULL){
+    else if(!takeoffQueue.isEmpty()){
         currentPlane = takeoffQueue.dequeue();
         timeRemaining = timeToTakeoff;
         StatKeeper::setTakeoffs();
