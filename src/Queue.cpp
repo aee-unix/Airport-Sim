@@ -43,6 +43,8 @@ Airplane * Queue::dequeue()
     Airplane * airplane = new Airplane(0, 0);
 
     read(readPipe, airplane, sizeof(*airplane));
+    
+    --planes;
 
     return airplane;
 }
