@@ -2,7 +2,7 @@
 #C++ project.
 
 CC = g++
-OBJECTS = Airplane.o Queue.o Node.o Runway.o StatKeeper.o BoolSource.o main.o
+OBJECTS = Airplane.o Runway.o StatKeeper.o BoolSource.o main.o
 EXECUTABLE = AirportSim
 
 AirportSim : $(OBJECTS)

@@ -1,6 +1,6 @@
 // =====================================================================================
 // 
-//       Filename:  Node.cpp
+//       Filename:  Node.hpp
 // 
 //    Description:  Node for the Queue
 // 
@@ -17,36 +17,42 @@
 #include "Node.h"
 
 // Node constructor.
-Node::Node(Airplane* p, Node* np)
+template < class T >
+Node<T>::Node(T p, Node* np)
 {
-    plane = p;
+    value = p;
     next = np;
 }
 // Node destructor.
-Node::~Node()
+template < class T >
+Node<T>::~Node()
 {
     if ( next ) delete next;
-    if ( plane ) delete plane;
+    if ( value ) delete value;
 }
 
-// Return the plane from the node.
-Airplane* Node::getPlane()
+// Return the value from the node.
+template < class T >
+T Node<T>::getValue()
 {
-    return plane;
+    return value;
 }
 // Return the next node in the linked list.
-Node* Node::getNext()
+template < class T >
+Node<T>* Node<T>::getNext()
 {
     return next;
 }
 
 // Set the next node in the linked list.
-void Node::setNext(Node* n)
+template < class T >
+void Node<T>::setNext(Node* n)
 {
     next = n;
 }
 // Set the next node in the linked list.
-void Node::setPlane(Airplane* p)
+template < class T >
+void Node<T>::setValue(T p)
 {
-    plane = p;
+    value = p;
 }

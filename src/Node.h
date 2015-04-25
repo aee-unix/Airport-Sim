@@ -17,28 +17,28 @@
 #ifndef NODE_H
 #define NODE_H
 
-#include "Airplane.h"
-
+template < class T >
 class Node
 {
     private:
-    // The plane contained by the node.
-    Airplane* plane;
+    // The value contained by the node.
+    T value;
     // The next node in the linked list.
-    Node* next;
+    Node<T>* next;
     public:
     // Constructor for Node.
-    Node(Airplane* p, Node* np);
+    Node(T p, Node* np);
     // Destructor for Node.
     ~Node();
-    // Return the plane from the node.
-    Airplane* getPlane();
+    // Return the value from the node.
+    T getValue();
     // Return the next node in the linked list.
-    Node* getNext();
+    Node<T>* getNext();
     // Set the next node in the linked list.
     void setNext(Node* n);
     // Set the next node in the linked list.
-    void setPlane(Airplane* p);
+    void setValue(T p);
 };
 
+#include "Node.hpp"
 #endif
