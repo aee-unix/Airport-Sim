@@ -15,7 +15,9 @@
 // =====================================================================================
 
 #include <cstdlib>
+#include <cstdio>
 #include <iostream>
+#include <unistd.h>
 #include "RunwayProc.h"
 
 using namespace std;
@@ -25,7 +27,16 @@ RunwayProc::RunwayProc(Queue* queue, int tTime, int lTime,
     : runway(queue, tTime, lTime, prob)
     , sigFd(fd)
 {
-    // Empty body
+    if ((pid = fork()) == -1)
+    {
+        perror("Failed to fork in RunwayProc.");
+        exit(-1);
+    } else if (pid == 0)
+    {
+        run();
+    }
+
+    return;
 }
 
 void RunwayProc::run()
