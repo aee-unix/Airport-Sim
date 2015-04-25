@@ -30,13 +30,17 @@ bool Queue::isEmpty()
 }
 void Queue::addNewPlane(Airplane * airplane)
 {
+    lockWrite();
     write (writePipe, airplane, sizeof(*airplane));
     ++planes;
+    unlockWrite();
 }
 Airplane * Queue::dequeue()
 {
+    lockRead();
     if ( isEmpty() )
     {
+        unlockRead();
         return NULL;
     }
 
@@ -45,6 +49,8 @@ Airplane * Queue::dequeue()
     read(readPipe, airplane, sizeof(*airplane));
     
     --planes;
+
+    unlockRead();
 
     return airplane;
 }
