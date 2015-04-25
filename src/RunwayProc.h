@@ -19,6 +19,7 @@
 
 #include "Queue.h"
 #include "Runway.h" 
+#include <vector>
 
 class RunwayProc
 {
@@ -26,10 +27,11 @@ class RunwayProc
     Runway runway;
     int sigFd;
     int pid;
+    static std::vector<int> pidStore;
     public:
     RunwayProc(Queue* queue, int tTime, int lTime, double prob, int fd);
     void run();
     int getPid();
-}
+};
 
 #endif
