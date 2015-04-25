@@ -17,7 +17,7 @@
 #include "Runway.h"
 #include <cstdlib>
 
-Runway::Runway(Queue* queue, int tTime, int lTime, double prob)
+Runway::Runway(Queue<Airplane *>* queue, int tTime, int lTime, double prob)
 {
     timeRemaining = 0;
     landingQueue = queue;
@@ -34,11 +34,11 @@ Airplane* Runway::getCurrentPlane()
 {
     return currentPlane;
 }
-Queue* Runway::getTakeoffQueue()
+Queue<Airplane *>* Runway::getTakeoffQueue()
 {
     return &takeoffQueue;
 }
-Queue* Runway::getLandingQueue()
+Queue<Airplane *>* Runway::getLandingQueue()
 {
     return landingQueue;
 }

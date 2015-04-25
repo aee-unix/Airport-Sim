@@ -32,7 +32,7 @@ int main(int argc, char *argv[]){
     int crash = atoi(argv[7]);
 	
 	//Declare objects
-	Queue queue;
+	Queue<Airplane *> queue;
 	StatKeeper statkeeper;
 	Runway runway(&queue, takeoff, land, probTakeoff);
 
