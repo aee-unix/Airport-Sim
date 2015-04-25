@@ -14,29 +14,29 @@
 // 
 // =====================================================================================
 
-#ifndef AIRNODE_H
-#define AIRNODE_H
+#ifndef NODE_H
+#define NODE_H
 
 #include "Airplane.h"
 
-class AirNode
+class Node
 {
     private:
     // The plane contained by the node.
     Airplane* plane;
     // The next node in the linked list.
-    AirNode* next;
+    Node* next;
     public:
-    // Constructor for AirNode.
-    AirNode(Airplane* p, AirNode* np);
-    // Destructor for AirNode.
-    ~AirNode();
+    // Constructor for Node.
+    Node(Airplane* p, Node* np);
+    // Destructor for Node.
+    ~Node();
     // Return the plane from the node.
     Airplane* getPlane();
     // Return the next node in the linked list.
-    AirNode* getNext();
+    Node* getNext();
     // Set the next node in the linked list.
-    void setNext(AirNode* n);
+    void setNext(Node* n);
     // Set the next node in the linked list.
     void setPlane(Airplane* p);
 };

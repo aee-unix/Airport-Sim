@@ -29,12 +29,12 @@ bool Queue::isEmpty()
 void Queue::addNewPlane(Airplane* airplane)
 {
     if (head == NULL){
-        AirNode* node = new AirNode(airplane, NULL);
+        Node* node = new Node(airplane, NULL);
         head = node;
         tail = node;
     }
     else{
-        AirNode* node = new AirNode(airplane, NULL);
+        Node* node = new Node(airplane, NULL);
         tail->setNext(node);
         tail = node;
     }
@@ -46,7 +46,7 @@ Airplane* Queue::dequeue()
     if (head == NULL)
         return NULL;
     else{
-        AirNode* node = head;
+        Node* node = head;
         head = head->getNext();
         Airplane* airplane = node->getPlane();
         node->setNext(NULL);
@@ -62,7 +62,7 @@ Airplane* Queue::peek()
     if (head == NULL)
         return NULL;
     else{
-        AirNode* node = head;
+        Node* node = head;
         Airplane* airplane = node->getPlane();
         return airplane;
     }
