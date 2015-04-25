@@ -20,7 +20,7 @@
 #include <unistd.h>
 #include "RunwayProc.h"
 
-using namespace std;
+std::vector<int> RunwayProc::pidStore;
 
 RunwayProc::RunwayProc(Queue* queue, int tTime, int lTime,
                        double prob, int fd)
@@ -34,8 +34,10 @@ RunwayProc::RunwayProc(Queue* queue, int tTime, int lTime,
     } else if (pid == 0)
     {
         run();
+    } else
+    {
+        pidStore.push_back(pid);
     }
-
     return;
 }
 
