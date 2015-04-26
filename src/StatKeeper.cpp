@@ -24,6 +24,7 @@ int StatKeeper::takeoffs = 0;
 int StatKeeper::landings = 0;
 int StatKeeper::crashes = 0;
 int StatKeeper::worldTime = 0;
+int StatKeeper::endTime = 0;
 int StatKeeper::totalSimTime = 0;
 
 int StatKeeper::getTotalTakeoffTime()
@@ -50,6 +51,10 @@ int StatKeeper::getWorldTime()
 {
     return worldTime;
 }
+int StatKeeper::getEndTime()
+{
+    return endTime;
+}
 void StatKeeper::incrementTakeoffTime(int time)
 {
     totalTakeoffTime += time;
@@ -74,6 +79,10 @@ void StatKeeper::setWorldTime(int time)
 {
     worldTime = time;
     totalSimTime = time;
+}
+void StatKeeper::setEndTime(int time)
+{
+    endTime = time;
 }
 void StatKeeper::incrementTime()
 {
