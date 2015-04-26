@@ -35,7 +35,7 @@ int Airplane::getTimeIn()
 // Return whether a plane has crashed due to lack of fuel at a given time.
 bool Airplane::isCrashed(int curTime)
 {
-    if((curTime - timeIn) >= fuel)
+    if((timeIn - curTime) >= fuel)
         return true;
     else
         return false;
