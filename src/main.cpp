@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <signal.h>
 #include <sys/types.h>
+#include <vector>
 using namespace std;
 
 int main(int argc, char *argv[]){
@@ -45,12 +46,19 @@ int main(int argc, char *argv[]){
 
     pipe(sigPipes);
 
-	RunwayProc runway(&queue, takeoff, land, probTakeoff, sigPipes[1]);
+    vector<RunwayProc> runways;
+    runways.push_back(RunwayProc(&queue, takeoff, land, probTakeoff, sigPipes[1]));
+    runways.push_back(RunwayProc(&queue, takeoff, land, probTakeoff, sigPipes[1]));
 
 	//Runs airport simulator
 	for (StatKeeper::setWorldTime(start); StatKeeper::getWorldTime() >= stop; StatKeeper::incrementTime()){
-	       	//Random time for fuel
-        read(sigPipes[0], &doneSig, sizeof(doneSig));
+        // Query runways to see if they are done.
+        for (unsigned int i = 0; i < runways.size(); ++i)
+        {
+            read(sigPipes[0], &doneSig, sizeof(doneSig));
+        }
+
+        //Random time for fuel
 		int fuel = rand() % crash;
 
 		//If plane should land, land plane	
@@ -61,9 +69,21 @@ int main(int argc, char *argv[]){
             queue.unlockWrite();
 		}
 
-        runway.resume();
+        // Resume all runways.
+        for (vector<RunwayProc>::iterator runway = runways.begin();
+             runway != runways.end();
+             ++runway)
+        {
+            runway->resume();
+        }
 	}
-    runway.resume();
+    // Resume all runways once more to make up for starting first.
+    for (vector<RunwayProc>::iterator runway = runways.begin();
+         runway != runways.end();
+         ++runway)
+    {
+        runway->resume();
+    }
 
 	return 0;
 }
