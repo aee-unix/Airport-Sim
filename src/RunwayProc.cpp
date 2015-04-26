@@ -18,9 +18,16 @@
 #include <cstdio>
 #include <iostream>
 #include <unistd.h>
+#include <signal.h>
+#include <sys/types.h>
 #include "RunwayProc.h"
 
 std::vector<int> RunwayProc::pidStore;
+
+void donothing(int signum)
+{
+    // Empty body
+}
 
 RunwayProc::RunwayProc(Queue* queue, int tTime, int lTime,
                        double prob, int fd)
@@ -43,7 +50,17 @@ RunwayProc::RunwayProc(Queue* queue, int tTime, int lTime,
 
 void RunwayProc::run()
 {
-    // Empty body
+    signal(SIGUSR1, donothing);
+    for (;
+         StatKeeper::getWorldTime() > StatKeeper::getEndTime();
+         StatKeeper::incrementTime())
+    {
+        pause();
+        runway.timestep();
+        write(sigFd, &pid, sizeof(pid));
+    }
+
+    StatKeeper::printStats();
 }
 
 int RunwayProc::getPid()
