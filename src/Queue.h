@@ -1,3 +1,4 @@
+// =====================================================================================
 // 
 //       Filename:  Queue.h
 // 
@@ -16,20 +17,22 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include "AirNode.h"
+#include "Node.h"
 
+template < class T >
 class Queue
 {
     private:
-    AirNode* head;
-    AirNode* tail;
+    Node<T>* head;
+    Node<T>* tail;
     public:
     Queue();
     ~Queue();
     bool isEmpty();
-    void addNewPlane(Airplane*);
-    Airplane* dequeue();
-    Airplane* peek();
+    void addNewPlane(T value);
+    T dequeue();
+    T peek();
 };
 
+#include "Queue.hpp"
 #endif

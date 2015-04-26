@@ -4,7 +4,7 @@
 //Purpose: Controls actions of AirportSim C++ project.
 
 #include <iostream>
-#include "AirNode.h"
+#include "Node.h"
 #include "Airplane.h"
 #include "BoolSource.h"
 #include "Queue.h"
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]){
     int crash = atoi(argv[7]);
 	
 	//Declare objects
-	Queue queue;
+	Queue<Airplane *> queue;
 	StatKeeper statkeeper;
 	Runway runway(&queue, takeoff, land, probTakeoff);
 

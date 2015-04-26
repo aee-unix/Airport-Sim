@@ -2,7 +2,7 @@
 #C++ project.
 
 CC = g++
-OBJECTS = Airplane.o Queue.o AirNode.o Runway.o StatKeeper.o BoolSource.o main.o
+OBJECTS = Airplane.o Runway.o StatKeeper.o BoolSource.o main.o
 EXECUTABLE = AirportSim
 
 AirportSim : $(OBJECTS)
@@ -11,8 +11,8 @@ Airplane.o : Airplane.cpp Airplane.h
 	$(CC) -Wall -g -c Airplane.cpp
 Queue.o : Queue.cpp Queue.h
 	$(CC) -Wall -g -c Queue.cpp
-AirNode.o : AirNode.cpp AirNode.h
-	$(CC) -Wall -g -c AirNode.cpp
+Node.o : Node.cpp Node.h
+	$(CC) -Wall -g -c Node.cpp
 Runway.o : Runway.cpp Runway.h
 	$(CC) -Wall -g -c Runway.cpp
 StatKeeper.o : StatKeeper.cpp StatKeeper.h

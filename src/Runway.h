@@ -17,16 +17,16 @@
 #ifndef RUNWAY_H
 #define RUNWAY_H
 
+#include "Airplane.h"
 #include "Queue.h"
 #include "StatKeeper.h"
 #include "BoolSource.h"
-#include "AirNode.h"
 
 class Runway
 {
     private:
-    Queue takeoffQueue;
-    Queue* landingQueue;
+    Queue<Airplane *> takeoffQueue;
+    Queue<Airplane *>* landingQueue;
     StatKeeper* runwayStats;
     Airplane* currentPlane;
     int timeRemaining;
@@ -34,11 +34,11 @@ class Runway
     int timeToLand;
     double probTakeoff;
     public:
-    Runway(Queue* queue, int tTime, int lTime, double prob);
+    Runway(Queue<Airplane *>* queue, int tTime, int lTime, double prob);
     ~Runway();
     Airplane* getCurrentPlane();
-    Queue* getTakeoffQueue();
-    Queue* getLandingQueue();
+    Queue<Airplane *>* getTakeoffQueue();
+    Queue<Airplane *>* getLandingQueue();
     int getTimeRemaining();
     void timestep();
     void checkQueues();

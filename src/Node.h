@@ -1,8 +1,8 @@
 // =====================================================================================
 // 
-//       Filename:  AirNode.h
+//       Filename:  Node.h
 // 
-//    Description:  Header for AirNode class.
+//    Description:  Header for Node class.
 // 
 //        Version:  1.0
 //        Created:  04/02/2015 09:33:00 PM
@@ -14,31 +14,31 @@
 // 
 // =====================================================================================
 
-#ifndef AIRNODE_H
-#define AIRNODE_H
+#ifndef NODE_H
+#define NODE_H
 
-#include "Airplane.h"
-
-class AirNode
+template < class T >
+class Node
 {
     private:
-    // The plane contained by the node.
-    Airplane* plane;
+    // The value contained by the node.
+    T value;
     // The next node in the linked list.
-    AirNode* next;
+    Node<T>* next;
     public:
-    // Constructor for AirNode.
-    AirNode(Airplane* p, AirNode* np);
-    // Destructor for AirNode.
-    ~AirNode();
-    // Return the plane from the node.
-    Airplane* getPlane();
+    // Constructor for Node.
+    Node(T p, Node* np);
+    // Destructor for Node.
+    ~Node();
+    // Return the value from the node.
+    T getValue();
     // Return the next node in the linked list.
-    AirNode* getNext();
+    Node<T>* getNext();
     // Set the next node in the linked list.
-    void setNext(AirNode* n);
+    void setNext(Node* n);
     // Set the next node in the linked list.
-    void setPlane(Airplane* p);
+    void setValue(T p);
 };
 
+#include "Node.hpp"
 #endif
