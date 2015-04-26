@@ -23,7 +23,7 @@ int main(int argc, char *argv[]){
     srand (time(NULL));
 
    	//Checks if number of parameters is correct 
-	if (argc != 8){
+	if (argc != 9){
 		cout << "Error! Invalid number of arguments.";
 		return 1;
 	}
@@ -35,6 +35,7 @@ int main(int argc, char *argv[]){
     int start = atoi(argv[5]);
     int stop = atoi(argv[6]);
     int crash = atoi(argv[7]);
+    int numRunways = atoi(argv[8]);
 
     StatKeeper::setWorldTime(start);
     StatKeeper::setEndTime(stop);
@@ -47,8 +48,10 @@ int main(int argc, char *argv[]){
     pipe(sigPipes);
 
     vector<RunwayProc> runways;
-    runways.push_back(RunwayProc(&queue, takeoff, land, probTakeoff, sigPipes[1]));
-    runways.push_back(RunwayProc(&queue, takeoff, land, probTakeoff, sigPipes[1]));
+    for (int i = 0; i < numRunways; ++i)
+    {
+        runways.push_back(RunwayProc(&queue, takeoff, land, probTakeoff, sigPipes[1]));
+    }
 
 	//Runs airport simulator
 	for (StatKeeper::setWorldTime(start); StatKeeper::getWorldTime() > stop; StatKeeper::incrementTime()){
@@ -87,7 +90,7 @@ int main(int argc, char *argv[]){
         read(sigPipes[0], &doneSig, sizeof(doneSig));
         if (runway + 1 != runways.end())
         {
-            sleep(1);
+            usleep(1000);
             cout << endl;
         }
     }
