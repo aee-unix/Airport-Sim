@@ -23,7 +23,7 @@ class Queue
     private:
     int writePipe;
     int readPipe;
-    unsigned int planes;
+    Airplane * peeker;
 
     public:
     Queue();

@@ -8,13 +8,16 @@
 #include "Queue.h"
 
 Queue::Queue()
-    : planes(0)
+    : peeker(NULL)
 {
     int pipes[2];
     pipe(pipes);
 
     writePipe = pipes[1];
     readPipe = pipes[0];
+
+    int flags = fcntl(readPipe, F_GETFL, 0);
+    fcntl(readPipe, F_SETFL, flags | O_NONBLOCK);
 }
 
 Queue::~Queue()
@@ -26,32 +29,32 @@ Queue::~Queue()
 // Tells user whether queue is empty or not
 bool Queue::isEmpty()
 {
-    return ( planes <= 0 );
+    if (peeker == NULL)
+    {
+        peeker = (Airplane *) malloc(sizeof(*peeker));
+        int status = read(readPipe, peeker, sizeof(*peeker));
+        if (status == -1)
+        {
+            free(peeker);
+            peeker = NULL;
+        }
+    }
+
+    return ( peeker == NULL );
 }
 void Queue::addNewPlane(Airplane * airplane)
 {
     lockWrite();
     write (writePipe, airplane, sizeof(*airplane));
     delete airplane;
-    ++planes;
     unlockWrite();
 }
 Airplane * Queue::dequeue()
 {
-    lockRead();
-    if ( isEmpty() )
-    {
-        unlockRead();
-        return NULL;
-    }
+    isEmpty();
 
-    Airplane * airplane = new Airplane(0, 0);
-
-    read(readPipe, airplane, sizeof(*airplane));
-    
-    --planes;
-
-    unlockRead();
+    Airplane * airplane = peeker;
+    peeker = NULL;
 
     return airplane;
 }
