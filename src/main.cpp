@@ -56,7 +56,9 @@ int main(int argc, char *argv[]){
 		//If plane should land, land plane	
 		if (BoolSource::randBool(probLand) == true){
 			Airplane* airplane = new Airplane(fuel, StatKeeper::getWorldTime());
+            queue.lockWrite();
 			queue.addNewPlane(airplane);
+            queue.unlockWrite();
 		}
 
         usleep(50);

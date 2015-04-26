@@ -50,7 +50,11 @@ void Runway::timestep()
 {
     //adds plane to takeoffQueue randomly
     if(BoolSource::randBool(probTakeoff))
+    {
+        takeoffQueue.lockWrite();
         takeoffQueue.addNewPlane(new Airplane(0, StatKeeper::getWorldTime()));
+        takeoffQueue.unlockWrite();
+    }
 	if(timeRemaining > 0 && currentPlane != NULL) timeRemaining--;
     else if(currentPlane == NULL)
     {

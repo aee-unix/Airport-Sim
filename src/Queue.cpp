@@ -44,10 +44,8 @@ bool Queue::isEmpty()
 }
 void Queue::addNewPlane(Airplane * airplane)
 {
-    lockWrite();
     write (writePipe, airplane, sizeof(*airplane));
     delete airplane;
-    unlockWrite();
 }
 Airplane * Queue::dequeue()
 {
