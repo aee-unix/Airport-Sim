@@ -67,6 +67,7 @@ void RunwayProc::run()
     }
 
     StatKeeper::printStats();
+    write(sigFd, &pid, sizeof(pid));
 }
 
 int RunwayProc::getPid()

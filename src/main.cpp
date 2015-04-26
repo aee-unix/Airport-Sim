@@ -51,7 +51,7 @@ int main(int argc, char *argv[]){
     runways.push_back(RunwayProc(&queue, takeoff, land, probTakeoff, sigPipes[1]));
 
 	//Runs airport simulator
-	for (StatKeeper::setWorldTime(start); StatKeeper::getWorldTime() >= stop; StatKeeper::incrementTime()){
+	for (StatKeeper::setWorldTime(start); StatKeeper::getWorldTime() > stop; StatKeeper::incrementTime()){
         // Query runways to see if they are done.
         for (unsigned int i = 0; i < runways.size(); ++i)
         {
@@ -82,7 +82,14 @@ int main(int argc, char *argv[]){
          runway != runways.end();
          ++runway)
     {
+        cout << "Runway " << distance(runways.begin(), runway) + 1 << endl;
         runway->resume();
+        read(sigPipes[0], &doneSig, sizeof(doneSig));
+        if (runway + 1 != runways.end())
+        {
+            sleep(1);
+            cout << endl;
+        }
     }
 
 	return 0;
