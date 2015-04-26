@@ -9,8 +9,12 @@
 #include "BoolSource.h"
 #include "Queue.h"
 #include "Runway.h"
+#include "RunwayProc.h"
 #include "StatKeeper.h"
 #include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <sys/types.h>
 using namespace std;
 
 int main(int argc, char *argv[]){
@@ -30,27 +34,33 @@ int main(int argc, char *argv[]){
     int start = atoi(argv[5]);
     int stop = atoi(argv[6]);
     int crash = atoi(argv[7]);
+
+    StatKeeper::setWorldTime(start);
+    StatKeeper::setEndTime(stop);
 	
 	//Declare objects
 	Queue queue;
-	StatKeeper statkeeper;
-	Runway runway(&queue, takeoff, land, probTakeoff);
+    int sigPipes[2];
+    int doneSig;
+
+    pipe(sigPipes);
+
+	RunwayProc runway(&queue, takeoff, land, probTakeoff, sigPipes[1]);
 
 	//Runs airport simulator
-	for (statkeeper.setWorldTime(start); statkeeper.getWorldTime() > stop; statkeeper.incrementTime()){
+	for (StatKeeper::setWorldTime(start); StatKeeper::getWorldTime() > stop; StatKeeper::incrementTime()){
 	       	//Random time for fuel
 		int fuel = rand() % crash;
 
 		//If plane should land, land plane	
 		if (BoolSource::randBool(probLand) == true){
-			Airplane* airplane = new Airplane(fuel, statkeeper.getWorldTime());
+			Airplane* airplane = new Airplane(fuel, StatKeeper::getWorldTime());
 			queue.addNewPlane(airplane);
 		}
 
-		runway.timestep();
+        kill(SIGUSR1, runway.getPid());
+        read(sigPipes[0], &doneSig, sizeof(doneSig));
 	}
-
-    statkeeper.printStats();
 
 	return 0;
 }
