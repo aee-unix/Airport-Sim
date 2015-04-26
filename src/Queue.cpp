@@ -32,6 +32,7 @@ void Queue::addNewPlane(Airplane * airplane)
 {
     lockWrite();
     write (writePipe, airplane, sizeof(*airplane));
+    delete airplane;
     ++planes;
     unlockWrite();
 }
