@@ -77,6 +77,8 @@ void Runway::checkQueues()
             delete currentPlane;
             currentPlane = NULL;
             StatKeeper::setCrashes();
+            landingQueue -> unlockRead();
+            takeoffQueue.unlockRead();
             return;
         }
         StatKeeper::setLandings();
