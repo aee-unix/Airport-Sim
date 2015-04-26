@@ -41,6 +41,7 @@ RunwayProc::RunwayProc(Queue* queue, int tTime, int lTime,
     } else if (pid == 0)
     {
         run();
+        exit(0);
     } else
     {
         pidStore.push_back(pid);
@@ -51,13 +52,16 @@ RunwayProc::RunwayProc(Queue* queue, int tTime, int lTime,
 void RunwayProc::run()
 {
     signal(SIGUSR1, donothing);
+
+    write(sigFd, &pid, sizeof(pid));
+    pause();
     for (;
          StatKeeper::getWorldTime() > StatKeeper::getEndTime();
          StatKeeper::incrementTime())
     {
-        pause();
         runway.timestep();
         write(sigFd, &pid, sizeof(pid));
+        pause();
     }
 
     StatKeeper::printStats();

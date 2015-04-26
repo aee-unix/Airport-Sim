@@ -48,8 +48,9 @@ int main(int argc, char *argv[]){
 	RunwayProc runway(&queue, takeoff, land, probTakeoff, sigPipes[1]);
 
 	//Runs airport simulator
-	for (StatKeeper::setWorldTime(start); StatKeeper::getWorldTime() > stop; StatKeeper::incrementTime()){
+	for (StatKeeper::setWorldTime(start); StatKeeper::getWorldTime() >= stop; StatKeeper::incrementTime()){
 	       	//Random time for fuel
+        read(sigPipes[0], &doneSig, sizeof(doneSig));
 		int fuel = rand() % crash;
 
 		//If plane should land, land plane	
@@ -58,9 +59,11 @@ int main(int argc, char *argv[]){
 			queue.addNewPlane(airplane);
 		}
 
-        kill(SIGUSR1, runway.getPid());
-        read(sigPipes[0], &doneSig, sizeof(doneSig));
+        usleep(50);
+        kill(runway.getPid(), SIGUSR1);
 	}
+    usleep(50);
+    kill(runway.getPid(), SIGUSR1);
 
 	return 0;
 }
