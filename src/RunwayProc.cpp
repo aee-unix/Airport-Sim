@@ -34,6 +34,8 @@ RunwayProc::RunwayProc(Queue* queue, int tTime, int lTime,
     : runway(queue, tTime, lTime, prob)
     , sigFd(fd)
 {
+    pipe(contPipes);
+
     if ((pid = fork()) == -1)
     {
         perror("Failed to fork in RunwayProc.");
@@ -54,14 +56,14 @@ void RunwayProc::run()
     signal(SIGUSR1, donothing);
 
     write(sigFd, &pid, sizeof(pid));
-    pause();
+    waitForResume();
     for (;
          StatKeeper::getWorldTime() > StatKeeper::getEndTime();
          StatKeeper::incrementTime())
     {
         runway.timestep();
         write(sigFd, &pid, sizeof(pid));
-        pause();
+        waitForResume();
     }
 
     StatKeeper::printStats();
@@ -70,4 +72,16 @@ void RunwayProc::run()
 int RunwayProc::getPid()
 {
     return pid;
+}
+
+void RunwayProc::waitForResume()
+{
+    int status = 0;
+    read(contPipes[0], &status, sizeof(status));
+}
+
+void RunwayProc::resume()
+{
+    int status = 1;
+    write(contPipes[1], &status, sizeof(status));
 }

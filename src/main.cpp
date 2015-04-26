@@ -61,11 +61,9 @@ int main(int argc, char *argv[]){
             queue.unlockWrite();
 		}
 
-        usleep(50);
-        kill(runway.getPid(), SIGUSR1);
+        runway.resume();
 	}
-    usleep(50);
-    kill(runway.getPid(), SIGUSR1);
+    runway.resume();
 
 	return 0;
 }
