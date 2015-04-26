@@ -26,6 +26,7 @@ class StatKeeper
     static int landings;
     static int crashes;
     static int worldTime;
+    static int totalSimTime;
     public:
     static int getTotalTakeoffTime();
     static int getTotalLandingTime();
