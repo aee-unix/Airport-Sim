@@ -19,7 +19,7 @@ int main(int argc, char *argv[]){
 
    	//Checks if number of parameters is correct 
 	if (argc != 8){
-		cout << "Error! Invalid number of arguments.";
+		cout << "Error! Invalid number of arguments.\n";
 		return 1;
 	}
 
