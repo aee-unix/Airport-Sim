@@ -1,5 +1,9 @@
 This is the git repository for the CS 3376 final project. Authors include Anna McDougald, Elyse McCoy, and Eric Dilmore. Our programming log is located at the following location: https://docs.google.com/document/d/1Io_E0gqTMtQvDbemlZ4wm16apYFqo8Uihs9MMgAouDc/edit?usp=sharing. Our entire project is hosted on GitHub at https://github.com/aee-unix/Airport-Sim/
 
+You can make and run both the single and the multi-process versions of the code with the following command:
+
+	./test.sh
+
 The single-runway version is on the master branch. Input and output is as defined in the project specs. Make and run the file with:
 
 	cd src
