@@ -1,0 +1,48 @@
+04/26/2015
+
+To the directors of the airport:
+
+The airport simulation program was used to determine if there was a need for additional runways at our airport to lighten traffic load. The assumptions used to run the simulation are that takeoff takes 4 minutes, landing takes 3 minutes, a plane will run out of fuel after a maximum of 20 minutes, and there is a 10% probability that a plane will enter either the landing or takeoff queue. The simulation was run for 1440 minutes, or one whole day. A sample of 7 simulations was taken to account for variations in traffic.
+
+After processing the data, it was found that one runway produced an average wait time of 1.7 minutes to land and 16.1 minutes to takeoff. Two runways produced an average wait time of 0.7 minutes to land and 6.3 minutes to takeoff. Three runways produced an average wait time of 0.4 minutes to land and 3.6 minutes to takeoff. The data from the simulations is attached at the bottom of the document for your inspection.
+
+Adding one additional runway reduced the average wait to takeoff by 9.8 minutes, an 87% difference, and reduced the average wait to land by 1.0 minutes, or 83%. Adding two additional runways reduced the average wait time to takeoff by 12.5 minutes, or 126%, and reduced the average wait to land by 1.3 minutes, or 123%. Based on this data, it is our recommendation that the airport is expanded to two runways to accommodate more traffic, as expanding to three runways does not decrease wait time enough to warrant the cost.
+
+Sincerely,
+Eric Dilmore
+Elyse McCoy
+Anna McDougald
+
+1 Runway
+--------
+Land    Takeoff
+2.0    27.9
+1.8    20.9
+1.5    9.7
+1.8    16.2
+1.8    14.6
+1.5    10.0
+1.8    13.2
+
+2 Runways
+---------
+Land    Takeoff
+0.7    5.6
+0.6    11.2
+0.8    8.3
+0.7    5.1
+0.9    6.2
+0.7    3.0
+0.6    5.0
+
+
+3 Runways
+---------
+Land    Takeoff
+0.4        4.3
+0.5        3.5
+0.7        4.4
+0.4        2.3
+0.4        2.7
+0.4        4.7
+0.3        3.5
