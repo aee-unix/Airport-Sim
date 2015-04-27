@@ -2,6 +2,7 @@ This is the git repository for the CS 3376 final project. Authors include Anna M
 
 You can make and run both the single and the multi-process versions of the code with the following command:
 
+	chmod u+x test.sh
 	./test.sh
 
 The single-runway version is on the master branch. Input and output is as defined in the project specs. Make and run the file with:
