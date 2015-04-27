@@ -94,5 +94,5 @@ double StatKeeper::getAverageTakeoffTime()
 }
 double StatKeeper::getAverageLandingTime()
 {
-    return (double) (totalLandingTime) / (landings + crashes);
+    return (double) (totalLandingTime) / (landings);
 }
